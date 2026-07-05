@@ -4,4 +4,9 @@ import App from './app/App.tsx';
 import './styles/index.css';
 import { LanguageProvider } from './app/context/LanguageContext';
 
-create
+createRoot(document.getElementById('root')!).render(
+  <LanguageProvider>
+    <App />
+  </LanguageProvider>
+);
+  

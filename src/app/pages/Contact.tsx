@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, ChevronDown } from 'lucide-react';
 import { toast } from 'sonner';
 import { Breadcrumb } from '../components/Breadcrumb';
@@ -14,7 +14,7 @@ export default function Contact() {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // Simulation d'envoi - à connecter avec un backend réel
     toast.success('Message envoyé avec succès! Nous vous répondrons dans les plus brefs délais.');
@@ -28,7 +28,7 @@ export default function Contact() {
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -180,6 +180,7 @@ export default function Contact() {
                       required
                       className="w-full px-4 py-3 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all"
                       placeholder="Votre nom"
+                      autoComplete="name"
                     />
                   </div>
 
@@ -196,6 +197,7 @@ export default function Contact() {
                       required
                       className="w-full px-4 py-3 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all"
                       placeholder="votre@email.com"
+                      autoComplete="email"
                     />
                   </div>
                 </div>
@@ -213,6 +215,7 @@ export default function Contact() {
                           value={formData.phoneCountryCode}
                           onChange={handleChange}
                           className="w-full px-3 py-3 pr-8 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all appearance-none cursor-pointer text-sm"
+                        aria-label="Indicatif téléphonique"
                         >
                           {countryCodes.map((item) => (
                             <option key={item.code} value={item.code}>
@@ -234,6 +237,7 @@ export default function Contact() {
                         required
                         className="flex-1 px-4 py-3 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all"
                         placeholder="XXX XXX XXX"
+                        autoComplete="tel"
                       />
                     </div>
                   </div>
@@ -250,6 +254,7 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 pr-10 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all appearance-none cursor-pointer"
+                        aria-label="Service concerné"
                       >
                         <option value="">Sélectionnez un service</option>
                         <option value="maritime">Fret Maritime</option>
@@ -281,6 +286,7 @@ export default function Contact() {
                     rows={6}
                     className="w-full px-4 py-3 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all resize-none"
                     placeholder="Décrivez votre besoin..."
+                    autoComplete="off"
                   />
                 </div>
 
@@ -310,7 +316,7 @@ export default function Contact() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31542.548574366657!2d-13.70622!3d9.51667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf1cd0d9a5d52cc9%3A0x4c0d5b5e5f5e5f5e!2sConakry%2C%20Guinea!5e0!3m2!1sen!2s!4v1234567890"
               width="100%"
               height="100%"
-              style={{ border: 0 }}
+              className="border-0"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

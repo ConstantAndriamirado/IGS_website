@@ -133,4 +133,16 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 lg:px-8 py-6">
-          <div className="flex flex-col md:
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+            <p>&copy; {currentYear} Ibrahima Golden Services. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'} | {language === 'fr' ? 'Développé par' : 'Developed by'} <a href="https://www.soulcom.gn" target="_blank" rel="noopener noreferrer" className="hover:text-[#E85E27] transition-colors">SoulCom</a></p>
+            <div className="flex gap-6">
+              <Link to="/mentions-legales" className="hover:text-[#E85E27] transition-colors">{language === 'fr' ? 'Mentions légales' : 'Legal notices'}</Link>
+              <Link to="/confidentialite" className="hover:text-[#E85E27] transition-colors">{language === 'fr' ? 'Confidentialité' : 'Privacy policy'}</Link>
+              <Link to="/cgu" className="hover:text-[#E85E27] transition-colors">CGU</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

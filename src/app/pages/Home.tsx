@@ -730,4 +730,70 @@ export default function Home() {
                 <img 
                   src="https://images.unsplash.com/photo-1583521214690-73421a1829a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21zJTIwY2xlYXJhbmNlJTIwZG9jdW1lbnRzJTIwcGFwZXJ3b3JrfGVufDF8fHx8MTc3MTIwMzk2OXww&ixlib=rb-4.1.0&q=80&w=1080" 
                   alt="Dédouanement" 
-                  className="w-full h-full object-co
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
+                  <Calendar size={16} />
+                  <span>08 Fév, 2026</span>
+                </div>
+                <h3 className="text-xl font-bold text-[#232d37] mb-3">
+                  Guide complet du dédouanement en Guinée
+                </h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Tout ce que vous devez savoir sur les procédures douanières et la documentation requise.
+                </p>
+                <Link to="/blog/nouvelles-procedures-douanieres-guinee-2026" className="flex items-center gap-2 text-[#232d37] font-semibold hover:text-[#E85E27] transition-colors group">
+                  Savoir Plus
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </motion.article>
+
+            {/* Card 3 */}
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+            >
+              <div className="relative h-56 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1713846047266-12aa96cbbb6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMGFpcmNyYWZ0JTIwYWlyJTIwZnJlaWdodxlbnwxfHx8fDE3NzEyMDM5NzB8MA&ixlib=rb-4.1.0&q=80&w=1080" 
+                  alt="Fret aérien" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
+                  <Calendar size={16} />
+                  <span>05 Fév, 2026</span>
+                </div>
+                <h3 className="text-xl font-bold text-[#232d37] mb-3">
+                  Fret aérien : rapidité et efficacité garanties
+                </h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Expédiez vos marchandises en toute sécurité avec nos services de fret aérien express.
+                </p>
+                <Link to="/blog/fret-aerien-express-rapidite-difference" className="flex items-center gap-2 text-[#232d37] font-semibold hover:text-[#E85E27] transition-colors group">
+                  Savoir Plus
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </motion.article>
+          </div>
+
+          {/* Mobile "Voir Tout" Button */}
+          <div className="flex md:hidden justify-center mt-8">
+            <button className="flex items-center gap-2 text-[#232d37] font-semibold hover:text-[#E85E27] transition-colors">
+              Voir Tout
+              <ArrowRight size={20} />
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

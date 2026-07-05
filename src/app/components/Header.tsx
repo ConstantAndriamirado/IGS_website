@@ -195,4 +195,36 @@ export function Header() {
                 />
                 <button
                   type="submit"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#E85E27] text-white p-2 rounded-lg hover:bg-[#d14d1a] transition-colors"
+                  aria-label="Rechercher"
+                >
+                  <ArrowRight size={20} />
+                </button>
+              </form>
+
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <p className="text-sm text-gray-500 mb-3">Recherche rapide :</p>
+                <div className="flex flex-wrap gap-2">
+                  {['Fret maritime', 'Dédouanement', 'Transit', 'Tracking'].map((tag) => (
+                    <button
+                      key={tag}
+                      onClick={() => {
+                        setSearchQuery(tag);
+                        navigate(`/search?search=${encodeURIComponent(tag)}`);
+                        setIsSearchOpen(false);
+                        setSearchQuery('');
+                      }}
+                      className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-[#E85E27] hover:text-white transition-colors"
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}

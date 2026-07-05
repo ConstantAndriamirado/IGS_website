@@ -95,4 +95,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/admin",
-   
+        element: <Admin />,
+      },
+      {
+        path: "*",
+        element: <MainLayout><NotFound /></MainLayout>,
+      },
+    ],
+  },
+]);
