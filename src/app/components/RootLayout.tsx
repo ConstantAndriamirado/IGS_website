@@ -11,6 +11,7 @@ export function RootLayout() {
       '/': 'IGS - Transit & Logistique en Guinée',
       '/services': 'Nos Services - IGS',
       '/about': 'À propos - IGS',
+      '/partners': 'Nos Partenaires - IGS',
       '/blog': 'Blog - IGS',
       '/search': 'Recherche - IGS',
       '/contact': 'Contact - IGS',

@@ -15,6 +15,7 @@ import BlogPost from './pages/BlogPost';
 import Search from './pages/Search';
 import Contact from './pages/Contact';
 import PortailClient from './pages/PortailClient';
+import Partners from './pages/Partners';
 import Admin from './pages/Admin';
 import { MentionsLegales } from './pages/MentionsLegales';
 import { Confidentialite } from './pages/Confidentialite';
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <MainLayout><Contact /></MainLayout>,
+      },
+      {
+        path: "/partners",
+        element: <MainLayout><Partners /></MainLayout>,
       },
       {
         path: "/portail-client",

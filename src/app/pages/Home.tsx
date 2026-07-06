@@ -11,8 +11,8 @@ export default function Home() {
       icon: Ship,
       title: language === 'fr' ? 'Fret Maritime' : 'Sea Freight',
       description: language === 'fr'
-        ? 'Transport maritime international de marchandises avec suivi en temps réel. Solutions adaptées à chaque volume et chaque besoin.'
-        : 'International sea freight services with real-time tracking and tailored solutions for every shipment volume.',
+        ? 'Coordination portuaire et transport maritime pour vos expéditions import/export, avec suivi et sécurité.'
+        : 'Port coordination and international sea freight for your import/export shipments, with tracking and security.',
       link: '/services',
       image: 'https://images.unsplash.com/photo-1634638022229-5a52221886dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHNoaXAlMjBwb3J0JTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE1ODQzNHww&ixlib=rb-4.1.0&q=80&w=1080'
     },
@@ -20,8 +20,8 @@ export default function Home() {
       icon: Plane,
       title: language === 'fr' ? 'Fret Aérien' : 'Air Freight',
       description: language === 'fr'
-        ? 'Solutions aériennes rapides pour les expéditions urgentes, sensibles ou à forte valeur.'
-        : 'Fast air freight solutions for urgent, high-value or time-sensitive shipments.',
+        ? 'Solutions aériennes rapides et fiables pour les cargaisons urgentes, sensibles ou à haute valeur.'
+        : 'Fast and reliable air freight solutions for urgent, sensitive and high-value cargo.',
       link: '/services',
       image: 'https://images.unsplash.com/photo-1720428112577-528107b9c140?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMGFpcnBsYW5lJTIwZnJlaWdodHxlbnwxfHx8fDE3NzExOTg4MjV8MA&ixlib=rb-4.1.0&q=80&w=1080'
     },
@@ -29,8 +29,8 @@ export default function Home() {
       icon: Truck,
       title: language === 'fr' ? 'Fret Routier' : 'Road Freight',
       description: language === 'fr'
-        ? 'Transport routier fiable pour les liaisons nationales, régionales et transfrontalières.'
-        : 'Reliable road transportation for national, regional and cross-border deliveries.',
+        ? 'Transport routier sécurisé et ponctuel pour les liaisons nationales, régionales et transfrontalières.'
+        : 'Secure and punctual road transport for national, regional and cross-border movements.',
       link: '/services',
       image: 'https://images.unsplash.com/photo-1761666519980-e29488141562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cnVjayUyMHRyYW5zcG9ydGF0aW9uJTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE5ODgyNXww&ixlib=rb-4.1.0&q=80&w=1080'
     },
@@ -38,8 +38,8 @@ export default function Home() {
       icon: FileCheck,
       title: language === 'fr' ? 'Dédouanement' : 'Customs Clearance',
       description: language === 'fr'
-        ? 'Expertise en procédures douanières import/export pour des opérations conformes et sans retard.'
-        : 'Customs expertise for import/export procedures with full compliance and smooth processing.',
+        ? 'Gestion documentaire, procédures import/export et conformité douanière pour des opérations sans friction.'
+        : 'Document management, import/export procedures and customs compliance for smooth operations.',
       link: '/services',
       image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21zJTIwd2FyZWhvdXNlJTIwaW50ZXJuYXRpb25hbHxlbnwxfHx8fDE3NzExOTg4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080'
     }
@@ -79,7 +79,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-center">
+      <section className="relative h-[90vh] min-h-[600px] flex items-center pt-16 lg:pt-20">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1703977883249-d959f2b0c1ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzaGlwcGluZyUyMGNvbnRhaW5lcnMlMjBjYXJnbyUyMHBvcnQlMjBsb2dpc3RpY3N8ZW58MXx8fHwxNzc0Nzg1MTYxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -90,20 +90,20 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl lg:max-w-5xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                {language === 'fr' ? 'Votre partenaire stratégique en' : 'Your strategic partner in'}{' '}
-                <span className="text-[#E85E27]">{language === 'fr' ? 'Transit & Logistique' : 'Transit & Logistics'}</span>
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                {language === 'fr' ? 'Votre partenaire stratégique pour le' : 'Your strategic partner for'}{' '}
+                <span className="text-[#E85E27]">{language === 'fr' ? 'transit, le dédouanement et la logistique' : 'transit, customs clearance and logistics'}</span>
               </h1>
               <p className="text-xl text-gray-200 mb-8">
                 {language === 'fr'
-                  ? 'Solutions complètes de fret maritime, aérien, routier et dédouanement en Guinée. Performance, fiabilité et expertise au service de votre réussite.'
-                  : 'Comprehensive solutions for sea, air, road freight and customs clearance in Guinea. Performance, reliability and expertise at the service of your success.'}
+                  ? 'IGS accompagne les importateurs, exportateurs et entreprises industrielles dans la gestion de leurs opérations logistiques avec efficacité, conformité et réactivité.'
+                  : 'IGS supports importers, exporters and industrial companies in the management of their logistics operations with efficiency, compliance and responsiveness.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -155,33 +155,33 @@ export default function Home() {
             >
               <div className="mb-4">
                 <span className="text-[#E85E27] font-semibold uppercase tracking-wide text-sm">
-                  {language === 'fr' ? 'Expertise en Transit Douanier et Dédouanement' : 'Expertise in Customs Transit and Clearance'}
+                  {language === 'fr' ? 'Expertise en transit, dédouanement et logistique' : 'Expertise in transit, customs clearance and logistics'}
                 </span>
               </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-[#232d37] mb-6 leading-tight">
-                {language === 'fr' ? 'Votre Partenaire de Confiance pour le Dédouanement en Guinée' : 'Your Trusted Partner for Customs Clearance in Guinea'}
+                {language === 'fr' ? 'Une présence fiable pour chaque opération internationale' : 'A reliable presence for every international operation'}
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
                 {language === 'fr'
-                  ? 'IGS vous accompagne dans toutes vos démarches de transit douanier avec une expertise reconnue en dédouanement maritime, aérien et routier. Nous simplifions vos formalités douanières pour une importation et exportation sans tracas.'
-                  : 'IGS supports you in all your customs transit processes with recognized expertise in maritime, air and road clearance. We simplify your customs formalities for smooth import and export operations.'}
+                  ? 'IGS met son réseau, son expertise réglementaire et son savoir-faire opérationnel au service de vos projets de transport, de dédouanement et de logistique. Nous sécurisons chaque étape, de la documentation à la livraison finale.'
+                  : 'IGS puts its network, regulatory expertise and operational know-how at the service of your transport, customs and logistics projects. We secure every step, from documentation to final delivery.'}
               </p>
 
               {/* Checkmarks List */}
               <div className="space-y-4 mb-8">
                 {[
                   language === 'fr'
-                    ? 'Expertise en dédouanement et formalités douanières'
-                    : 'Expertise in customs clearance and formalities',
+                    ? 'Expertise en dédouanement import/export et formalités douanières'
+                    : 'Expertise in import/export customs clearance and formalities',
                   language === 'fr'
-                    ? 'Traitement rapide et conforme de vos documents'
-                    : 'Fast and compliant processing of your documents',
+                    ? 'Traitement rapide, conforme et transparent de chaque dossier'
+                    : 'Fast, compliant and transparent handling of every file',
                   language === 'fr'
-                    ? 'Maîtrise des réglementations douanières guinéennes'
-                    : 'Mastery of Guinean customs regulations',
+                    ? 'Maîtrise des réglementations guinéennes et internationales'
+                    : 'Mastery of Guinean and international regulations',
                   language === 'fr'
-                    ? 'Accompagnement personnalisé pour chaque dossier'
-                    : 'Personalized support for every file'
+                    ? 'Accompagnement sur mesure pour chaque chaîne logistique'
+                    : 'Tailored support for every logistics chain'
                 ].map((item, index) => (
                   <motion.div
                     key={item}
@@ -252,13 +252,13 @@ export default function Home() {
                   <>
                     Des solutions complètes
                     <br />
-                    de transit douanier
+                    pour chaque étape du commerce international
                   </>
                 ) : (
                   <>
                     Complete solutions
                     <br />
-                    for customs transit
+                    for every step of international trade
                   </>
                 )}
               </h2>
@@ -343,7 +343,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-white">+1.5K</div>
-                    <div className="text-gray-300 text-sm">Dossiers Traités</div>
+                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Dossiers Traités' : 'Files handled'}</div>
                   </div>
                 </div>
 
@@ -353,7 +353,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-white">80+</div>
-                    <div className="text-gray-300 text-sm">Partenaires</div>
+                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Partenaires' : 'Partners'}</div>
                   </div>
                 </div>
 
@@ -362,8 +362,8 @@ export default function Home() {
                     <Shield size={32} className="text-[#E85E27]" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-white">Certifié</div>
-                    <div className="text-gray-300 text-sm">Agrément Douanier</div>
+                    <div className="text-3xl font-bold text-white">{language === 'fr' ? 'Certifié' : 'Certified'}</div>
+                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Agrément Douanier' : 'Customs accreditation'}</div>
                   </div>
                 </div>
               </div>

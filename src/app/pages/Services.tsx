@@ -12,55 +12,55 @@ export default function Services() {
     {
       id: 'maritime',
       icon: Ship,
-      title: isFrench ? 'Fret Maritime' : 'Sea Freight',
+      title: isFrench ? 'Transit Maritime' : 'Maritime Transit',
       description: isFrench
-        ? 'Nous proposons des services de fret maritime adaptés à vos besoins spécifiques, que ce soit pour des expéditions nationales ou internationales.'
-        : 'We offer sea freight services tailored to your specific needs for both domestic and international shipments.',
+        ? 'Organisation du transport maritime international, coordination portuaire et accompagnement administratif pour vos cargaisons.'
+        : 'Organisation of international sea transport, port coordination and administrative support for your cargo.',
       image: 'https://images.unsplash.com/photo-1634638022229-5a52221886dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHNoaXAlMjBwb3J0JTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE1ODQzNHww&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'aerien',
       icon: Plane,
-      title: isFrench ? 'Fret Aérien' : 'Air Freight',
+      title: isFrench ? 'Transit Aérien' : 'Air Transit',
       description: isFrench
-        ? 'Des solutions de transport aérien rapides et fiables pour vos marchandises urgentes et de haute valeur.'
-        : 'Fast and reliable air transport solutions for urgent and high-value cargo.',
+        ? 'Solutions aériennes rapides pour les envois urgents, sensibles ou à forte valeur ajoutée.'
+        : 'Fast air solutions for urgent, sensitive or high-value shipments.',
       image: 'https://images.unsplash.com/photo-1720428112577-528107b9c140?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMGFpcnBsYW5lJTIwZnJlaWdodHxlbnwxfHx8fDE3NzExOTg4MjV8MA&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'routier',
       icon: Truck,
-      title: isFrench ? 'Fret Routier' : 'Road Freight',
+      title: isFrench ? 'Transport Routier' : 'Road Transport',
       description: isFrench
-        ? 'Nous proposons des services de transport routier adaptés à vos besoins spécifiques, que ce soit pour des expéditions nationales ou internationales.'
-        : 'We provide road transport services tailored to your specific needs for both national and international shipments.',
+        ? 'Transport routier fiable pour les liaisons nationales, régionales et transfrontalières avec suivi opérationnel.'
+        : 'Reliable road transport for national, regional and cross-border links with operational tracking.',
       image: 'https://images.unsplash.com/photo-1761666519980-e29488141562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cnVjayUyMHRyYW5zcG9ydGF0aW9uJTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE5ODgyNXww&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'dedouanement',
       icon: FileCheck,
-      title: isFrench ? 'Dédouanement' : 'Customs Clearance',
+      title: isFrench ? 'Dédouanement Import & Export' : 'Import & Export Customs Clearance',
       description: isFrench
-        ? 'Notre expertise douanière vous accompagne dans toutes vos démarches import/export en toute conformité réglementaire.'
-        : 'Our customs expertise supports all your import/export procedures with full regulatory compliance.',
+        ? 'Préparation documentaire, déclaration en douane et accompagnement réglementaire pour des opérations conformes et fluides.'
+        : 'Document preparation, customs declaration and regulatory support for compliant and smooth operations.',
       image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21zJTIwd2FyZWhvdXNlJTIwaW50ZXJuYXRpb25hbHxlbnwxfHx8fDE3NzExOTg4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'entreposage',
       icon: Package,
-      title: isFrench ? 'Entreposage' : 'Warehousing',
+      title: isFrench ? 'Logistique & Entreposage' : 'Logistics & Warehousing',
       description: isFrench
-        ? 'Des solutions d\'entreposage sécurisées et modernes pour vos marchandises avec gestion optimale de vos stocks.'
-        : 'Secure and modern warehousing solutions for your goods with optimized inventory management.',
+        ? 'Solutions d\'entreposage sécurisées et modernes pour la gestion efficace de vos stocks et flux de marchandises.'
+        : 'Secure and modern warehousing solutions for efficient inventory and cargo flow management.',
       image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXJlaG91c2UlMjBzdG9yYWdlJTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTIwNjM2NXww&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'conseil',
       icon: Shield,
-      title: isFrench ? 'Conseil Logistique' : 'Logistics Advisory',
+      title: isFrench ? 'Conseil en Commerce International' : 'International Trade Advisory',
       description: isFrench
-        ? 'Nos experts vous accompagnent dans l\'optimisation de votre chaîne logistique et la réduction de vos coûts.'
-        : 'Our experts support you in optimizing your supply chain and reducing your costs.',
+        ? 'Conseils stratégiques pour optimiser vos coûts, sécuriser vos opérations et renforcer votre performance commerciale.'
+        : 'Strategic advice to optimize costs, secure operations and strengthen your commercial performance.',
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbnN1bHRpbmclMjBtZWV0aW5nfGVufDF8fHx8MTc3MTIwNjM2NXww&ixlib=rb-4.1.0&q=80&w=1080'
     }
   ];
@@ -87,12 +87,12 @@ export default function Services() {
           >
             <Breadcrumb variant="dark" />
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              {isFrench ? 'Nos' : 'Our'} <span className="text-[#E85E27]">{isFrench ? 'Services' : 'Services'}</span>
+              {isFrench ? 'Nos' : 'Our'} <span className="text-[#E85E27]">{isFrench ? 'services' : 'services'}</span>
             </h1>
             <p className="text-xl text-gray-200 leading-relaxed">
               {isFrench
-                ? 'Des solutions logistiques complètes et sur mesure pour tous vos besoins de transport et dédouanement'
-                : 'Complete and tailored logistics solutions for all your transport and customs needs'}
+                ? 'Des solutions de transit, de dédouanement, de fret et de logistique sur mesure pour accompagner vos opérations d’import-export avec efficacité.'
+                : 'Tailored transit, customs clearance, freight and logistics solutions to support your import-export operations with efficiency.'}
             </p>
           </motion.div>
         </div>

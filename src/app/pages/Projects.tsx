@@ -71,8 +71,8 @@ export default function Projects() {
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">{isFrench ? 'Nos' : 'Our'} <span className="text-[#E85E27]">{isFrench ? 'réalisations' : 'projects'}</span></h1>
             <p className="text-xl text-gray-200 leading-relaxed">
               {isFrench
-                ? 'IGS accompagne ses clients dans des opérations logistiques complexes avec efficacité, rapidité et fiabilité.'
-                : 'IGS supports its clients in complex logistics operations with efficiency, speed and reliability.'}
+                ? 'IGS accompagne ses clients dans des opérations de transit, de dédouanement, de fret et de logistique avec efficacité, rapidité et fiabilité.'
+                : 'IGS supports its clients in transit, customs clearance, freight and logistics operations with efficiency, speed and reliability.'}
             </p>
           </motion.div>
         </div>
@@ -105,8 +105,8 @@ export default function Projects() {
           <h2 className="text-3xl font-bold text-[#232d37] mb-4">{isFrench ? 'Prêt à démarrer votre prochain projet ?' : 'Ready to start your next project?'}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
             {isFrench
-              ? 'Notre équipe vous accompagne depuis la première demande jusqu’à l’achèvement de vos opérations.'
-              : 'Our team supports you from your first request through to the completion of your operations.'}
+              ? 'Notre équipe vous accompagne depuis la première demande jusqu’à l’achèvement de vos opérations, avec un suivi attentif à chaque étape.'
+              : 'Our team supports you from your first request through to the completion of your operations, with attentive follow-up at every stage.'}
           </p>
           <Link to="/contact" className="inline-flex items-center gap-2 bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-3.5 rounded-lg font-medium transition-colors">
             {isFrench ? 'Demander un devis' : 'Request a quote'}

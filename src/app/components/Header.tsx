@@ -39,6 +39,7 @@ export function Header() {
     { to: '/', label: isFrench ? 'Accueil' : 'Home' },
     { to: '/services', label: isFrench ? 'Nos Services' : 'Our Services' },
     { to: '/about', label: isFrench ? 'À propos' : 'About Us' },
+    { to: '/partners', label: isFrench ? 'Nos Partenaires' : 'Our Partners' },
     { to: '/projects', label: isFrench ? 'Réalisations' : 'Projects' },
     { to: '/contact', label: 'Contact' },
   ];
@@ -46,31 +47,31 @@ export function Header() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 ${isScrolled ? 'shadow-lg' : ''}`}>
       {/* Main Navigation */}
-      <div className={`bg-white transition-all duration-300 ${isScrolled ? 'py-3' : 'py-5'}`}>
+      <div className="bg-white transition-shadow duration-300 py-4">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex justify-between items-center gap-8">
+          <div className="flex justify-between items-center gap-4 lg:gap-6 xl:gap-8">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 flex-shrink-0">
               <img 
-                src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsb2dpc3RpY3MlMjBjb21wYW55JTIwbG9nbyUyMGdvbGRlbnxlbnwxfHx8fDE3NzQ3ODU4NTN8MA&ixlib=rb-4.1.0&q=80&w=400"
+                src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHNlYXJjaHwxfHxsb2dpc3RpY3MlMjBjb21wYW55JTIwbG9nbyUyMGdvbGRlbnxlbnwxfHx8fDE3NzQ3ODU4NTN8MA&ixlib=rb-4.1.0&q=80&w=400"
                 alt="IGS - Ibrahima Golden Services"
-                className={`transition-all duration-300 object-contain ${isScrolled ? 'h-12' : 'h-16'}`}
+                className="h-12 sm:h-14 object-contain"
               />
             </Link>
 
             {/* Desktop Navigation - Centered */}
-            <nav className="hidden lg:flex items-center gap-8 flex-grow justify-center">
+            <nav className="hidden lg:flex items-center gap-3 xl:gap-4 mx-4 flex-1 max-w-[55%] justify-center min-w-0">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`font-medium transition-colors relative group ${
+                  className={`text-sm xl:text-[15px] font-medium transition-colors relative group ${
                     isActive(link.to) ? 'text-[#E85E27]' : 'text-[#232d37] hover:text-[#E85E27]'
                   }`}
                 >
-                  {link.label}
+                  <span className="block truncate max-w-[12rem]">{link.label}</span>
                   <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#E85E27] transition-transform origin-left ${
                     isActive(link.to) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`} />
@@ -79,10 +80,10 @@ export function Header() {
             </nav>
 
             {/* Right Section: Search, Phone, Portal Button */}
-            <div className="hidden lg:flex items-center gap-6 flex-shrink-0">
+            <div className="hidden lg:flex items-center gap-3 xl:gap-4 flex-shrink-0">
               <button 
                 onClick={() => setIsSearchOpen(true)}
-                className="text-[#232d37] hover:text-[#E85E27] transition-colors" 
+                className="text-[#232d37] hover:text-[#E85E27] transition-colors cursor-pointer" 
                 aria-label={isFrench ? 'Rechercher' : 'Search'}
               >
                 <Search size={20} />
@@ -90,25 +91,26 @@ export function Header() {
               
               <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-2 text-sm font-medium text-[#232d37] hover:border-[#E85E27] hover:text-[#E85E27] transition-colors"
+                className="flex items-center gap-2 border border-gray-200 rounded-full px-3 py-2 text-sm font-medium text-[#232d37] hover:border-[#E85E27] hover:text-[#E85E27] transition-colors cursor-pointer"
               >
                 <Globe size={16} />
                 {isFrench ? 'FR' : 'EN'}
               </button>
 
-              <div className="flex items-center gap-2 border-l border-gray-200 pl-6">
-                <Phone size={20} className="text-[#E85E27]" />
+              <div className="flex items-center gap-2 border-l border-gray-200 pl-4 xl:pl-6">
+                <Phone size={18} className="text-[#E85E27]" />
                 <div>
                   <div className="text-xs text-gray-500">{isFrench ? 'Appelez-Nous' : 'Call Us'}</div>
-                  <div className="font-semibold text-[#232d37]">+224 612 004 903</div>
+                  <div className="text-sm font-semibold text-[#232d37]">+224 612 004 903</div>
                 </div>
               </div>
 
-              <Link 
-                to="/contact" 
-                className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-6 py-2.5 rounded-lg transition-colors font-medium text-sm ml-2"
+              <Link
+                to="/contact"
+                className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-3 xl:px-6 py-2.5 rounded-lg transition-colors font-medium text-sm ml-1 flex-shrink-0"
               >
-                {language === 'fr' ? 'Demander un devis' : 'Request a quote'}
+                <span className="hidden xl:inline">{language === 'fr' ? 'Demander un devis' : 'Request a quote'}</span>
+                <span className="inline xl:hidden">{language === 'fr' ? 'Devis' : 'Quote'}</span>
               </Link>
             </div>
 

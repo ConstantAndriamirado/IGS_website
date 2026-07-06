@@ -70,7 +70,7 @@ export default function Contact() {
       icon: MapPin,
       title: isFrench ? 'Adresse' : 'Address',
       content: isFrench
-        ? 'Almamya, Kaloum, Rue de la gare\nImmeuble Azur, Conakry\nRépublique de Guinée'
+        ? 'Almamya, Kaloum, Rue de la Gare\nImmeuble Azur, Conakry\nRépublique de Guinée'
         : 'Almamya, Kaloum, Rue de la Gare\nAzur Building, Conakry\nRepublic of Guinea',
       link: null
     },
@@ -120,8 +120,8 @@ export default function Contact() {
             </h1>
             <p className="text-xl text-gray-200 leading-relaxed">
               {isFrench
-                ? 'Notre équipe d\'experts est à votre écoute pour répondre à toutes vos questions et vous accompagner dans vos projets logistiques.'
-                : 'Our team of experts is at your disposal to answer all your questions and support your logistics projects.'}
+                ? 'Notre équipe d\'experts est à votre écoute pour analyser vos besoins, préparer votre demande et vous accompagner dans vos projets de transit, de dédouanement et de logistique.'
+                : 'Our team of experts is at your disposal to analyze your needs, prepare your request and support your transit, customs and logistics projects.'}
             </p>
           </motion.div>
         </div>
@@ -265,12 +265,12 @@ export default function Contact() {
                         aria-label={isFrench ? 'Service concerné' : 'Service needed'}
                       >
                         <option value="">{isFrench ? 'Sélectionnez un service' : 'Select a service'}</option>
-                        <option value="maritime">{isFrench ? 'Fret Maritime' : 'Sea Freight'}</option>
-                        <option value="aerien">{isFrench ? 'Fret Aérien' : 'Air Freight'}</option>
-                        <option value="routier">{isFrench ? 'Fret Routier' : 'Road Freight'}</option>
-                        <option value="dedouanement">{isFrench ? 'Dédouanement' : 'Customs Clearance'}</option>
-                        <option value="entreposage">{isFrench ? 'Entreposage' : 'Warehousing'}</option>
-                        <option value="conseil">{isFrench ? 'Conseil Logistique' : 'Logistics Advisory'}</option>
+                        <option value="maritime">{isFrench ? 'Transit Maritime' : 'Maritime Transit'}</option>
+                        <option value="aerien">{isFrench ? 'Transit Aérien' : 'Air Transit'}</option>
+                        <option value="routier">{isFrench ? 'Transport Routier' : 'Road Transport'}</option>
+                        <option value="dedouanement">{isFrench ? 'Dédouanement Import & Export' : 'Import & Export Customs Clearance'}</option>
+                        <option value="logistique">{isFrench ? 'Logistique & Entreposage' : 'Logistics & Warehousing'}</option>
+                        <option value="conseil">{isFrench ? 'Conseil en Commerce International' : 'International Trade Advisory'}</option>
                         <option value="autre">{isFrench ? 'Autre demande' : 'Other request'}</option>
                       </select>
                       <ChevronDown 

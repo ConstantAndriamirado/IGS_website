@@ -98,8 +98,8 @@ export default function PortailClient() {
             className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
             {isFrench
-              ? 'Nous travaillons actuellement sur votre nouvel espace client digital. Une plateforme moderne pour gérer tous vos dossiers de transit et logistique en toute simplicité.'
-              : 'We are currently building your new digital client space. A modern platform to manage all your transit and logistics files with ease.'}
+              ? 'Nous travaillons actuellement sur votre nouvel espace client digital pour centraliser vos dossiers de transit, de dédouanement et de logistique en toute simplicité.'
+              : 'We are currently building your new digital client space to centralize your transit, customs and logistics files with complete simplicity.'}
           </motion.p>
 
           {/* Notification Form */}

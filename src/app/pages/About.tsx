@@ -87,17 +87,17 @@ export default function About() {
   return (
     <div className="min-h-screen pt-20 pb-20">
       {/* Hero Section */}
-      <section className="relative mb-20 overflow-hidden">
+      <section className="relative mb-20 overflow-hidden bg-gradient-to-br from-[#232d37] to-[#1a2129] text-white py-20">
         <div className="absolute inset-0 z-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1694702740570-0a31ee1525c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBidWlsZGluZ3xlbnwxfHx8fDE3NzExOTAzOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Office building"
+            alt={isFrench ? 'Bâtiment de bureau' : 'Office building'}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#232d37]/80 to-[#232d37]/60" />
+          <div className="absolute inset-0 bg-[#232d37]/80" />
         </div>
-        
-        <div className="container mx-auto px-4 lg:px-8 py-20 relative z-10">
+
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,12 +106,12 @@ export default function About() {
           >
             <Breadcrumb variant="dark" />
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              {isFrench ? 'À Propos d\'' : 'About'}<span className="text-[#E85E27]">IGS</span>
+              {isFrench ? 'À propos d\'IGS' : 'About IGS'}
             </h1>
             <p className="text-xl text-gray-200 leading-relaxed">
               {isFrench
-                ? 'Plus qu\'un prestataire logistique, IGS est votre partenaire stratégique pour tous vos projets de transit et dédouanement en Guinée et à l\'international.'
-                : 'More than a logistics provider, IGS is your strategic partner for all your transit and customs projects in Guinea and internationally.'}
+                ? 'IGS est une entreprise guinéenne spécialisée dans le transit, le dédouanement, le fret et la logistique internationale, au service des entreprises qui veulent agir avec efficacité et conformité.'
+                : 'IGS is a Guinean company specialized in transit, customs clearance, freight and international logistics, supporting businesses that want to operate with efficiency and compliance.'}
             </p>
           </motion.div>
         </div>
@@ -131,12 +131,12 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                {isFrench ? 'Fondée en 2012, ' : 'Founded in 2012, '}<strong className="text-[#E85E27]">Ibrahima Golden Services (IGS)</strong>{isFrench ? ' s\'est rapidement imposée comme un acteur majeur du secteur du transit douanier et de la logistique en Guinée.' : ' quickly established itself as a major player in customs transit and logistics in Guinea.'}
+                {isFrench ? 'Fondée en 2012, ' : 'Founded in 2012, '}<strong className="text-[#E85E27]">Ibrahima Golden Services (IGS)</strong>{isFrench ? ' s\'est rapidement imposée comme un acteur de confiance pour les entreprises qui recherchent une réponse fiable en matière de transit douanier, de dédouanement et de logistique.' : ' quickly established itself as a trusted actor for companies looking for reliable support in customs transit, clearance and logistics.'}
               </p>
               <p>
                 {isFrench
-                  ? 'Notre expertise couvre l\'ensemble de la chaîne logistique : fret maritime, aérien, routier et dédouanement. Grâce à notre connaissance approfondie des réglementations locales et internationales, nous facilitons vos opérations import-export en toute conformité.'
-                  : 'Our expertise covers the entire logistics chain: sea, air and road freight, as well as customs clearance. Thanks to our in-depth knowledge of local and international regulations, we make your import-export operations easier while keeping them fully compliant.'}
+                  ? 'Notre expertise couvre l\'ensemble de la chaîne logistique internationale : fret maritime, aérien, routier, gestion documentaire et conseil. Nous accompagnons chaque client avec une approche pragmatique, réactive et conforme aux exigences du commerce international.'
+                  : 'Our expertise covers the full international logistics chain: sea, air and road freight, document management and advisory services. We support each client with a pragmatic, responsive approach that meets the demands of international trade.'}
               </p>
               <p>
                 {isFrench ? (
