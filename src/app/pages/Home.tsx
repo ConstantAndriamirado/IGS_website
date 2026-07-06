@@ -248,7 +248,19 @@ export default function Home() {
                 </span>
               </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-[#232d37] leading-tight">
-                {language === 'fr' ? 'Des Solutions Complètes<br />De Transit Douanier' : 'Complete Solutions<br />for Customs Transit'}
+                {language === 'fr' ? (
+                  <>
+                    Des solutions complètes
+                    <br />
+                    de transit douanier
+                  </>
+                ) : (
+                  <>
+                    Complete solutions
+                    <br />
+                    for customs transit
+                  </>
+                )}
               </h2>
             </div>
             <Link
@@ -484,7 +496,9 @@ export default function Home() {
               COMMENT ÇA MARCHE ?
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-white">
-              Une prise en charge simple, rapide<br />et sécurisée de vos marchandises
+              Une prise en charge simple, rapide
+              <br />
+              et sécurisée de vos marchandises
             </h2>
           </motion.div>
 

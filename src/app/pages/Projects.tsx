@@ -1,38 +1,54 @@
 import { motion } from 'motion/react';
-import { Briefcase, ArrowRight, Ship, Plane, Truck, FileCheck, Globe } from 'lucide-react';
+import { Briefcase, ArrowRight, Ship, Truck, FileCheck, Globe } from 'lucide-react';
 import { Link } from 'react-router';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Projects() {
+  const { language } = useLanguage();
+  const isFrench = language === 'fr';
+
   const projects = [
     {
-      title: 'Dédouanement import/export',
-      description: 'Accompagnement complet des formalités douanières pour des opérations rapides, conformes et sécurisées.',
+      title: isFrench ? 'Dédouanement import/export' : 'Import/export customs clearance',
+      description: isFrench
+        ? 'Accompagnement complet des formalités douanières pour des opérations rapides, conformes et sécurisées.'
+        : 'Complete support for customs formalities to ensure fast, compliant and secure operations.',
       icon: FileCheck,
     },
     {
-      title: 'Transit international',
-      description: 'Coordination de la chaîne logistique internationale depuis le point de départ jusqu’à la livraison.',
+      title: isFrench ? 'Transit international' : 'International transit',
+      description: isFrench
+        ? 'Coordination de la chaîne logistique internationale depuis le point de départ jusqu’à la livraison.'
+        : 'Coordination of the international logistics chain from departure to final delivery.',
       icon: Globe,
     },
     {
-      title: 'Transport maritime et aérien',
-      description: 'Solutions adaptées aux exigences de rapidité, coût et sécurité selon la nature des marchandises.',
+      title: isFrench ? 'Transport maritime et aérien' : 'Sea and air transport',
+      description: isFrench
+        ? 'Solutions adaptées aux exigences de rapidité, coût et sécurité selon la nature des marchandises.'
+        : 'Solutions tailored to speed, cost and safety requirements based on the nature of the cargo.',
       icon: Ship,
     },
     {
-      title: 'Transport routier',
-      description: 'Gestion fluide des déplacements nationaux et régionaux avec suivi et expertise locale.',
+      title: isFrench ? 'Transport routier' : 'Road transport',
+      description: isFrench
+        ? 'Gestion fluide des déplacements nationaux et régionaux avec suivi et expertise locale.'
+        : 'Smooth management of national and regional movements with tracking and local expertise.',
       icon: Truck,
     },
     {
-      title: 'Logistique sur mesure',
-      description: 'Organisation de la chaîne logistique autour des besoins spécifiques de chaque client.',
+      title: isFrench ? 'Logistique sur mesure' : 'Tailored logistics',
+      description: isFrench
+        ? 'Organisation de la chaîne logistique autour des besoins spécifiques de chaque client.'
+        : 'Organization of the logistics chain around each client\'s specific requirements.',
       icon: Briefcase,
     },
     {
-      title: 'Conseil et support',
-      description: 'Appui stratégique pour optimiser les opérations, réduire les risques et gagner en efficacité.',
+      title: isFrench ? 'Conseil et support' : 'Advisory and support',
+      description: isFrench
+        ? 'Appui stratégique pour optimiser les opérations, réduire les risques et gagner en efficacité.'
+        : 'Strategic support to optimize operations, reduce risks and improve efficiency.',
       icon: ArrowRight,
     },
   ];
@@ -52,9 +68,11 @@ export default function Projects() {
         <div className="container mx-auto px-4 lg:px-8 py-20 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl text-white">
             <Breadcrumb variant="dark" />
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Nos <span className="text-[#E85E27]">réalisations</span></h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">{isFrench ? 'Nos' : 'Our'} <span className="text-[#E85E27]">{isFrench ? 'réalisations' : 'projects'}</span></h1>
             <p className="text-xl text-gray-200 leading-relaxed">
-              IGS accompagne ses clients dans des opérations logistiques complexes avec efficacité, rapidité et fiabilité.
+              {isFrench
+                ? 'IGS accompagne ses clients dans des opérations logistiques complexes avec efficacité, rapidité et fiabilité.'
+                : 'IGS supports its clients in complex logistics operations with efficiency, speed and reliability.'}
             </p>
           </motion.div>
         </div>
@@ -84,12 +102,14 @@ export default function Projects() {
         </div>
 
         <div className="mt-16 bg-[#F3F3F3] rounded-2xl p-8 lg:p-12 text-center">
-          <h2 className="text-3xl font-bold text-[#232d37] mb-4">Prêt à démarrer votre prochain projet ?</h2>
+          <h2 className="text-3xl font-bold text-[#232d37] mb-4">{isFrench ? 'Prêt à démarrer votre prochain projet ?' : 'Ready to start your next project?'}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            Notre équipe vous accompagne depuis la première demande jusqu’à l’achèvement de vos opérations.
+            {isFrench
+              ? 'Notre équipe vous accompagne depuis la première demande jusqu’à l’achèvement de vos opérations.'
+              : 'Our team supports you from your first request through to the completion of your operations.'}
           </p>
           <Link to="/contact" className="inline-flex items-center gap-2 bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-3.5 rounded-lg font-medium transition-colors">
-            Demander un devis
+            {isFrench ? 'Demander un devis' : 'Request a quote'}
             <ArrowRight size={18} />
           </Link>
         </div>

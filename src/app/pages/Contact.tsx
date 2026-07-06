@@ -3,8 +3,12 @@ import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, ChevronDown } from 'lucide-react';
 import { toast } from 'sonner';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const isFrench = language === 'fr';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,7 +21,7 @@ export default function Contact() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // Simulation d'envoi - à connecter avec un backend réel
-    toast.success('Message envoyé avec succès! Nous vous répondrons dans les plus brefs délais.');
+    toast.success(isFrench ? 'Message envoyé avec succès! Nous vous répondrons dans les plus brefs délais.' : 'Message sent successfully! We will get back to you as soon as possible.');
     setFormData({
       name: '',
       email: '',
@@ -64,13 +68,15 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Adresse',
-      content: 'Almamya, Kaloum, Rue de la gare\nImmeuble Azur, Conakry\nRépublique de Guinée',
+      title: isFrench ? 'Adresse' : 'Address',
+      content: isFrench
+        ? 'Almamya, Kaloum, Rue de la gare\nImmeuble Azur, Conakry\nRépublique de Guinée'
+        : 'Almamya, Kaloum, Rue de la Gare\nAzur Building, Conakry\nRepublic of Guinea',
       link: null
     },
     {
       icon: Phone,
-      title: 'Téléphone',
+      title: isFrench ? 'Téléphone' : 'Phone',
       content: '+224 612 004 903\n+224 612 004 900',
       link: 'tel:+224612004903'
     },
@@ -82,8 +88,8 @@ export default function Contact() {
     },
     {
       icon: Clock,
-      title: 'Heures d\'ouverture',
-      content: 'Lun - Ven : 08h30 - 17h30',
+      title: isFrench ? 'Heures d\'ouverture' : 'Opening hours',
+      content: isFrench ? 'Lun - Ven : 08h30 - 17h30' : 'Mon - Fri : 08:30 - 17:30',
       link: null
     }
   ];
@@ -110,10 +116,12 @@ export default function Contact() {
           >
             <Breadcrumb variant="dark" />
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              Contactez <span className="text-[#E85E27]">IGS</span>
+              {isFrench ? 'Contactez' : 'Contact'} <span className="text-[#E85E27]">IGS</span>
             </h1>
             <p className="text-xl text-gray-200 leading-relaxed">
-              Notre équipe d'experts est à votre écoute pour répondre à toutes vos questions et vous accompagner dans vos projets logistiques.
+              {isFrench
+                ? 'Notre équipe d\'experts est à votre écoute pour répondre à toutes vos questions et vous accompagner dans vos projets logistiques.'
+                : 'Our team of experts is at your disposal to answer all your questions and support your logistics projects.'}
             </p>
           </motion.div>
         </div>
@@ -162,14 +170,14 @@ export default function Contact() {
           >
             <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
               <h2 className="text-2xl font-bold text-[#232d37] mb-6">
-                Envoyez-nous un message
+                {isFrench ? 'Envoyez-nous un message' : 'Send us a message'}
               </h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-[#232d37] mb-2">
-                      Nom complet *
+                      {isFrench ? 'Nom complet *' : 'Full name *'}
                     </label>
                     <input
                       type="text"
@@ -179,14 +187,14 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all"
-                      placeholder="Votre nom"
+                      placeholder={isFrench ? 'Votre nom' : 'Your name'}
                       autoComplete="name"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-[#232d37] mb-2">
-                      Email *
+                      {isFrench ? 'Email *' : 'Email *'}
                     </label>
                     <input
                       type="email"
@@ -196,7 +204,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all"
-                      placeholder="votre@email.com"
+                      placeholder={isFrench ? 'votre@email.com' : 'your@email.com'}
                       autoComplete="email"
                     />
                   </div>
@@ -205,7 +213,7 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-[#232d37] mb-2">
-                      Téléphone *
+                      {isFrench ? 'Téléphone *' : 'Phone *'}
                     </label>
                     <div className="flex gap-2">
                       <div className="relative w-44">
@@ -215,7 +223,7 @@ export default function Contact() {
                           value={formData.phoneCountryCode}
                           onChange={handleChange}
                           className="w-full px-3 py-3 pr-8 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all appearance-none cursor-pointer text-sm"
-                        aria-label="Indicatif téléphonique"
+                        aria-label={isFrench ? 'Indicatif téléphonique' : 'Phone country code'}
                         >
                           {countryCodes.map((item) => (
                             <option key={item.code} value={item.code}>
@@ -236,7 +244,7 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         className="flex-1 px-4 py-3 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all"
-                        placeholder="XXX XXX XXX"
+                        placeholder={isFrench ? 'XXX XXX XXX' : 'XXX XXX XXX'}
                         autoComplete="tel"
                       />
                     </div>
@@ -244,7 +252,7 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-[#232d37] mb-2">
-                      Service concerné *
+                      {isFrench ? 'Service concerné *' : 'Service needed *'}
                     </label>
                     <div className="relative">
                       <select
@@ -254,16 +262,16 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 pr-10 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all appearance-none cursor-pointer"
-                        aria-label="Service concerné"
+                        aria-label={isFrench ? 'Service concerné' : 'Service needed'}
                       >
-                        <option value="">Sélectionnez un service</option>
-                        <option value="maritime">Fret Maritime</option>
-                        <option value="aerien">Fret Aérien</option>
-                        <option value="routier">Fret Routier</option>
-                        <option value="dedouanement">Dédouanement</option>
-                        <option value="entreposage">Entreposage</option>
-                        <option value="conseil">Conseil Logistique</option>
-                        <option value="autre">Autre demande</option>
+                        <option value="">{isFrench ? 'Sélectionnez un service' : 'Select a service'}</option>
+                        <option value="maritime">{isFrench ? 'Fret Maritime' : 'Sea Freight'}</option>
+                        <option value="aerien">{isFrench ? 'Fret Aérien' : 'Air Freight'}</option>
+                        <option value="routier">{isFrench ? 'Fret Routier' : 'Road Freight'}</option>
+                        <option value="dedouanement">{isFrench ? 'Dédouanement' : 'Customs Clearance'}</option>
+                        <option value="entreposage">{isFrench ? 'Entreposage' : 'Warehousing'}</option>
+                        <option value="conseil">{isFrench ? 'Conseil Logistique' : 'Logistics Advisory'}</option>
+                        <option value="autre">{isFrench ? 'Autre demande' : 'Other request'}</option>
                       </select>
                       <ChevronDown 
                         size={20} 
@@ -275,7 +283,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-[#232d37] mb-2">
-                    Message *
+                    {isFrench ? 'Message *' : 'Message *'}
                   </label>
                   <textarea
                     id="message"
@@ -285,7 +293,7 @@ export default function Contact() {
                     required
                     rows={6}
                     className="w-full px-4 py-3 bg-[#F3F3F3] border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E85E27] focus:border-transparent transition-all resize-none"
-                    placeholder="Décrivez votre besoin..."
+                    placeholder={isFrench ? 'Décrivez votre besoin...' : 'Describe your needs...'}
                     autoComplete="off"
                   />
                 </div>
@@ -294,7 +302,7 @@ export default function Contact() {
                   type="submit"
                   className="w-full bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2 group"
                 >
-                  Envoyer le message
+                  {isFrench ? 'Envoyer le message' : 'Send message'}
                   <Send className="group-hover:translate-x-1 transition-transform" size={20} />
                 </button>
               </form>
@@ -334,10 +342,12 @@ export default function Contact() {
           className="mt-12 bg-[#232d37] rounded-2xl p-8 lg:p-12 text-center text-white"
         >
           <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-            Besoin d'un Devis Rapide ?
+            {isFrench ? 'Besoin d\'un Devis Rapide ?' : 'Need a quick quote?'}
           </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Appelez-nous directement pour obtenir une réponse immédiate à vos questions ou un devis personnalisé.
+            {isFrench
+              ? 'Appelez-nous directement pour obtenir une réponse immédiate à vos questions ou un devis personnalisé.'
+              : 'Call us directly for an immediate response to your questions or a personalized quote.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
