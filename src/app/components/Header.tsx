@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { Search, Phone, Menu, X, ArrowRight, Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import logoSrc from '../../assets/images/logo_IGS.png';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,7 +56,7 @@ export function Header() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 flex-shrink-0">
               <img 
-                src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHNlYXJjaHwxfHxsb2dpc3RpY3MlMjBjb21wYW55JTIwbG9nbyUyMGdvbGRlbnxlbnwxfHx8fDE3NzQ3ODU4NTN8MA&ixlib=rb-4.1.0&q=80&w=400"
+                src={logoSrc}
                 alt="IGS - Ibrahima Golden Services"
                 className="h-12 sm:h-14 object-contain"
               />
