@@ -324,7 +324,9 @@ export default function ServiceDetail() {
                     <span className="text-sm text-[#E85E27] font-medium">Ibrahima Golden Services</span>
                   </div>
                   <h3 className="font-bold text-[#232d37] text-lg">
-                    Logistique & Fret<br />Pour Les Entreprises
+                    Logistique & Fret
+                    <br />
+                    Pour Les Entreprises
                   </h3>
                 </div>
 

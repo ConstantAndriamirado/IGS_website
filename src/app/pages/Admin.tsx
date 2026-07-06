@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { useLanguage } from '../context/LanguageContext';
 import {
   LayoutDashboard,
   FileText,
@@ -18,12 +19,9 @@ import {
   Image as ImageIcon
 } from 'lucide-react';
 import {
-  LineChart,
   Line,
   AreaChart,
   Area,
-  BarChart,
-  Bar,
   PieChart,
   Pie,
   Cell,
@@ -36,6 +34,9 @@ import {
 } from 'recharts';
 
 export default function Admin() {
+  const { language } = useLanguage();
+  const isFrench = language === 'fr';
+
   const [activeSection, setActiveSection] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -198,7 +199,7 @@ export default function Admin() {
         >
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-semibold text-[#232d37]">Visiteurs & Devis</h3>
-            <button className="text-gray-400 hover:text-gray-600">
+            <button aria-label={isFrench ? 'Télécharger' : 'Download'} className="text-gray-400 hover:text-gray-600">
               <Download size={20} />
             </button>
           </div>
@@ -237,7 +238,7 @@ export default function Admin() {
         >
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-semibold text-[#232d37]">Répartition des Services</h3>
-            <button className="text-gray-400 hover:text-gray-600">
+            <button aria-label={isFrench ? 'Afficher le graphique' : 'Show chart'} className="text-gray-400 hover:text-gray-600">
               <BarChart3 size={20} />
             </button>
           </div>
@@ -390,6 +391,7 @@ export default function Admin() {
           )}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
+            aria-label={sidebarOpen ? (isFrench ? 'Fermer le menu' : 'Close menu') : (isFrench ? 'Ouvrir le menu' : 'Open menu')}
             className="text-white hover:text-[#E85E27] transition-colors"
           >
             {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
@@ -401,6 +403,7 @@ export default function Admin() {
             <button
               key={item.id}
               onClick={() => setActiveSection(item.id)}
+              aria-label={item.name}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                 activeSection === item.id
                   ? 'bg-[#E85E27] text-white'
@@ -413,9 +416,9 @@ export default function Admin() {
           ))}
         </nav>
 
-        {sidebarOpen && (
+          {sidebarOpen && (
           <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-700">
-            <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+            <button aria-label={isFrench ? 'Se déconnecter' : 'Log out'} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
               <LogOut size={20} />
               <span>Déconnexion</span>
             </button>
@@ -435,6 +438,7 @@ export default function Admin() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
+                aria-label={isFrench ? 'Ouvrir le menu' : 'Open menu'}
                 className="lg:hidden text-gray-600 hover:text-[#E85E27]"
               >
                 <Menu size={24} />

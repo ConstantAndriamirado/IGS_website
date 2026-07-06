@@ -1,50 +1,66 @@
 import { motion } from 'motion/react';
-import { Ship, Plane, Truck, FileCheck, Anchor, Package, Clock, Shield, MapPin, CheckCircle2, Globe, ArrowRight } from 'lucide-react';
+import { Ship, Plane, Truck, FileCheck, Package, Shield, Globe, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Services() {
+  const { language } = useLanguage();
+  const isFrench = language === 'fr';
+
   const services = [
     {
       id: 'maritime',
       icon: Ship,
-      title: 'Fret Maritime',
-      description: 'Nous proposons des services de fret maritime adaptés à vos besoins spécifiques, que ce soit pour des expéditions nationales ou internationales.',
+      title: isFrench ? 'Transit Maritime' : 'Maritime Transit',
+      description: isFrench
+        ? 'Organisation du transport maritime international, coordination portuaire et accompagnement administratif pour vos cargaisons.'
+        : 'Organisation of international sea transport, port coordination and administrative support for your cargo.',
       image: 'https://images.unsplash.com/photo-1634638022229-5a52221886dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHNoaXAlMjBwb3J0JTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE1ODQzNHww&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'aerien',
       icon: Plane,
-      title: 'Fret Aérien',
-      description: 'Des solutions de transport aérien rapides et fiables pour vos marchandises urgentes et de haute valeur.',
+      title: isFrench ? 'Transit Aérien' : 'Air Transit',
+      description: isFrench
+        ? 'Solutions aériennes rapides pour les envois urgents, sensibles ou à forte valeur ajoutée.'
+        : 'Fast air solutions for urgent, sensitive or high-value shipments.',
       image: 'https://images.unsplash.com/photo-1720428112577-528107b9c140?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMGFpcnBsYW5lJTIwZnJlaWdodHxlbnwxfHx8fDE3NzExOTg4MjV8MA&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'routier',
       icon: Truck,
-      title: 'Fret Routier',
-      description: 'Nous proposons des services de transport routier adaptés à vos besoins spécifiques, que ce soit pour des expéditions nationales ou internationales.',
+      title: isFrench ? 'Transport Routier' : 'Road Transport',
+      description: isFrench
+        ? 'Transport routier fiable pour les liaisons nationales, régionales et transfrontalières avec suivi opérationnel.'
+        : 'Reliable road transport for national, regional and cross-border links with operational tracking.',
       image: 'https://images.unsplash.com/photo-1761666519980-e29488141562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cnVjayUyMHRyYW5zcG9ydGF0aW9uJTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE5ODgyNXww&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'dedouanement',
       icon: FileCheck,
-      title: 'Dédouanement',
-      description: 'Notre expertise douanière vous accompagne dans toutes vos démarches import/export en toute conformité réglementaire.',
+      title: isFrench ? 'Dédouanement Import & Export' : 'Import & Export Customs Clearance',
+      description: isFrench
+        ? 'Préparation documentaire, déclaration en douane et accompagnement réglementaire pour des opérations conformes et fluides.'
+        : 'Document preparation, customs declaration and regulatory support for compliant and smooth operations.',
       image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21zJTIwd2FyZWhvdXNlJTIwaW50ZXJuYXRpb25hbHxlbnwxfHx8fDE3NzExOTg4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'entreposage',
       icon: Package,
-      title: 'Entreposage',
-      description: 'Des solutions d\'entreposage sécurisées et modernes pour vos marchandises avec gestion optimale de vos stocks.',
+      title: isFrench ? 'Logistique & Entreposage' : 'Logistics & Warehousing',
+      description: isFrench
+        ? 'Solutions d\'entreposage sécurisées et modernes pour la gestion efficace de vos stocks et flux de marchandises.'
+        : 'Secure and modern warehousing solutions for efficient inventory and cargo flow management.',
       image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXJlaG91c2UlMjBzdG9yYWdlJTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTIwNjM2NXww&ixlib=rb-4.1.0&q=80&w=1080'
     },
     {
       id: 'conseil',
       icon: Shield,
-      title: 'Conseil Logistique',
-      description: 'Nos experts vous accompagnent dans l\'optimisation de votre chaîne logistique et la réduction de vos coûts.',
+      title: isFrench ? 'Conseil en Commerce International' : 'International Trade Advisory',
+      description: isFrench
+        ? 'Conseils stratégiques pour optimiser vos coûts, sécuriser vos opérations et renforcer votre performance commerciale.'
+        : 'Strategic advice to optimize costs, secure operations and strengthen your commercial performance.',
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbnN1bHRpbmclMjBtZWV0aW5nfGVufDF8fHx8MTc3MTIwNjM2NXww&ixlib=rb-4.1.0&q=80&w=1080'
     }
   ];
@@ -71,10 +87,12 @@ export default function Services() {
           >
             <Breadcrumb variant="dark" />
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              Nos <span className="text-[#E85E27]">Services</span>
+              {isFrench ? 'Nos' : 'Our'} <span className="text-[#E85E27]">{isFrench ? 'services' : 'services'}</span>
             </h1>
             <p className="text-xl text-gray-200 leading-relaxed">
-              Des solutions logistiques complètes et sur mesure pour tous vos besoins de transport et dédouanement
+              {isFrench
+                ? 'Des solutions de transit, de dédouanement, de fret et de logistique sur mesure pour accompagner vos opérations d’import-export avec efficacité.'
+                : 'Tailored transit, customs clearance, freight and logistics solutions to support your import-export operations with efficiency.'}
             </p>
           </motion.div>
         </div>
@@ -123,7 +141,7 @@ export default function Services() {
                   to={`/services/${service.id}`}
                   className="inline-flex items-center gap-1 text-[#E85E27] hover:text-[#d14d1a] font-medium transition-colors group"
                 >
-                  En savoir plus
+                  {isFrench ? 'En savoir plus' : 'Learn more'}
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
                 </Link>
               </div>
@@ -143,16 +161,18 @@ export default function Services() {
         >
           <Globe className="w-16 h-16 text-[#E85E27] mx-auto mb-6" />
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Besoin d'une Solution Personnalisée ?
+            {isFrench ? 'Besoin d\'une Solution Personnalisée ?' : 'Need a Tailored Solution?'}
           </h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto text-lg">
-            Nos experts sont à votre disposition pour analyser vos besoins spécifiques et vous proposer la solution logistique la plus adaptée.
+            {isFrench
+              ? 'Nos experts sont à votre disposition pour analyser vos besoins spécifiques et vous proposer la solution logistique la plus adaptée.'
+              : 'Our experts are available to analyze your specific needs and propose the most suitable logistics solution.'}
           </p>
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-4 rounded-lg font-semibold transition-colors group"
           >
-            Contactez nos experts
+            {isFrench ? 'Contactez nos experts' : 'Contact our experts'}
             <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
           </Link>
         </motion.div>

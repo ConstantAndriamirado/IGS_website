@@ -19,8 +19,8 @@ export function Footer() {
             </div>
             <p className="text-gray-400 mb-4">
               {language === 'fr'
-                ? 'Votre partenaire stratégique en transit douanier et logistique internationale en Guinée.'
-                : 'Your trusted strategic partner for customs transit and international logistics in Guinea.'}
+                ? 'Votre partenaire stratégique pour le transit, le dédouanement, le fret et la logistique internationale en Guinée.'
+                : 'Your trusted strategic partner for transit, customs clearance, freight and international logistics in Guinea.'}
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="Facebook">
@@ -52,6 +52,11 @@ export function Footer() {
               <li>
                 <Link to="/about" className="text-gray-400 hover:text-[#E85E27] transition-colors">
                   {language === 'fr' ? 'À propos' : 'About Us'}
+                </Link>
+              </li>
+              <li>
+                <Link to="/partners" className="text-gray-400 hover:text-[#E85E27] transition-colors">
+                  {language === 'fr' ? 'Nos partenaires' : 'Our partners'}
                 </Link>
               </li>
               <li>
