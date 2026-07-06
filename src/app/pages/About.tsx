@@ -393,6 +393,8 @@ export default function About() {
                   <div className="absolute inset-0 bg-[#232d37]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                     <a
                       href="#"
+                      title="Facebook"
+                      aria-label="Facebook"
                       className="w-10 h-10 bg-[#1877f2] rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
                       onClick={(e) => e.preventDefault()}
                     >
@@ -400,6 +402,8 @@ export default function About() {
                     </a>
                     <a
                       href="#"
+                      title="LinkedIn"
+                      aria-label="LinkedIn"
                       className="w-10 h-10 bg-[#0a66c2] rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
                       onClick={(e) => e.preventDefault()}
                     >

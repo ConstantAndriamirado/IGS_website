@@ -205,7 +205,7 @@ export default function Home() {
                   to="/contact"
                   className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-3.5 rounded-lg transition-colors font-medium text-base"
                 >
-                  Contactez-Nous
+                  {language === 'fr' ? 'Contactez-Nous' : 'Contact us'}
                 </Link>
 
                 <div className="flex items-center gap-6">
@@ -219,7 +219,9 @@ export default function Home() {
                         <Star key={i} size={14} className="fill-[#E85E27] text-[#E85E27]" />
                       ))}
                     </div>
-                    <p className="text-xs text-gray-600">Clients 4.8 (250+ Avis)</p>
+                    <p className="text-xs text-gray-600">
+                      {language === 'fr' ? 'Clients 4.8 (250+ Avis)' : 'Customers 4.8 (250+ Reviews)'}
+                    </p>
                   </div>
 
                   {/* Years of Experience */}
