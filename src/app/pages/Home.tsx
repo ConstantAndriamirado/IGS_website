@@ -14,7 +14,7 @@ export default function Home() {
         ? 'Coordination portuaire et transport maritime pour vos expéditions import/export, avec suivi et sécurité.'
         : 'Port coordination and international sea freight for your import/export shipments, with tracking and security.',
       link: '/services',
-      image: 'https://images.unsplash.com/photo-1634638022229-5a52221886dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHNoaXAlMjBwb3J0JTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE1ODQzNHww&ixlib=rb-4.1.0&q=80&w=1080'
+      image: 'https://images.unsplash.com/photo-1699588999949-e25959a59550'
     },
     {
       icon: Plane,
@@ -23,7 +23,7 @@ export default function Home() {
         ? 'Solutions aériennes rapides et fiables pour les cargaisons urgentes, sensibles ou à haute valeur.'
         : 'Fast and reliable air freight solutions for urgent, sensitive and high-value cargo.',
       link: '/services',
-      image: 'https://images.unsplash.com/photo-1720428112577-528107b9c140?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMGFpcnBsYW5lJTIwZnJlaWdodHxlbnwxfHx8fDE3NzExOTg4MjV8MA&ixlib=rb-4.1.0&q=80&w=1080'
+      image: 'https://images.unsplash.com/photo-1720428112577-528107b9c140'
     },
     {
       icon: Truck,
@@ -32,7 +32,7 @@ export default function Home() {
         ? 'Transport routier sécurisé et ponctuel pour les liaisons nationales, régionales et transfrontalières.'
         : 'Secure and punctual road transport for national, regional and cross-border movements.',
       link: '/services',
-      image: 'https://images.unsplash.com/photo-1761666519980-e29488141562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cnVjayUyMHRyYW5zcG9ydGF0aW9uJTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE5ODgyNXww&ixlib=rb-4.1.0&q=80&w=1080'
+      image: 'https://plus.unsplash.com/premium_photo-1661962316679-cd9b3b70bcaa'
     },
     {
       icon: FileCheck,
@@ -41,7 +41,7 @@ export default function Home() {
         ? 'Gestion documentaire, procédures import/export et conformité douanière pour des opérations sans friction.'
         : 'Document management, import/export procedures and customs compliance for smooth operations.',
       link: '/services',
-      image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21zJTIwd2FyZWhvdXNlJTIwaW50ZXJuYXRpb25hbHxlbnwxfHx8fDE3NzExOTg4MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080'
+      image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492'
     }
   ];
 
@@ -82,7 +82,7 @@ export default function Home() {
       <section className="relative h-[90vh] min-h-[600px] flex items-center pt-16 lg:pt-20">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1703977883249-d959f2b0c1ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzaGlwcGluZyUyMGNvbnRhaW5lcnMlMjBjYXJnbyUyMHBvcnQlMjBsb2dpc3RpY3N8ZW58MXx8fHwxNzc0Nzg1MTYxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            src="https://images.unsplash.com/photo-1703977883249-d959f2b0c1ae"
             alt="Logistics"
             className="w-full h-full object-cover"
           />
@@ -139,7 +139,7 @@ export default function Home() {
             >
               <div className="rounded-3xl overflow-hidden h-full min-h-[400px]">
                 <img
-                  src="https://images.unsplash.com/photo-1644134913822-1cd030b3d148?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzaGlwcGluZyUyMGNvbnRhaW5lciUyMGxvZ2lzdGljcyUyMHBvcnQ8ZW58MXx8fHwxNzcxMjAwMTE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  src="https://images.unsplash.com/photo-1590497008307-a56b3007197e"
                   alt="Container Logistics"
                   className="w-full h-full object-cover"
                 />
@@ -304,7 +304,7 @@ export default function Home() {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1739204618173-3e89def7140f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3YXJlaG91c2UlMjB3b3JrZXIlMjBsb2dpc3RpY3MlMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzcxMjAyMTAzfDA&ixlib=rb-4.1.0&q=80&w=1080" 
+                  src="https://images.unsplash.com/photo-1659353741664-f8d3ae82f90b" 
                   alt="IGS Professional Team" 
                   className="w-full h-[500px] object-cover"
                 />
@@ -475,7 +475,7 @@ export default function Home() {
               className="relative"
             >
               <img 
-                src="https://images.unsplash.com/photo-1644134913822-1cd030b3d148?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHNoaXBwaW5nJTIwY29udGFpbmVyJTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTIwMzUzMHww&ixlib=rb-4.1.0&q=80&w=1080" 
+                src="https://images.unsplash.com/photo-1524758631624-e2822e304c36" 
                 alt="Logistique et transit douanier IGS" 
                 className="w-full h-auto rounded-lg"
               />
@@ -711,7 +711,7 @@ export default function Home() {
             >
               <div className="relative h-56 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1644134913822-1cd030b3d148?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzaGlwcGluZyUyMGNvbnRhaW5lciUyMHBvcnQlMjBsb2dpc3RpY3N8ZW58MXx8fHwxNzcxMjAzOTY5fDA&ixlib=rb-4.1.0&q=80&w=1080" 
+                  src="https://images.unsplash.com/photo-1644134913822-1cd030b3d148" 
                   alt="Transit maritime" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -744,7 +744,7 @@ export default function Home() {
             >
               <div className="relative h-56 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1583521214690-73421a1829a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21zJTIwY2xlYXJhbmNlJTIwZG9jdW1lbnRzJTIwcGFwZXJ3b3JrfGVufDF8fHx8MTc3MTIwMzk2OXww&ixlib=rb-4.1.0&q=80&w=1080" 
+                  src="https://images.unsplash.com/photo-1583521214690-73421a1829a9" 
                   alt="Dédouanement" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -777,7 +777,7 @@ export default function Home() {
             >
               <div className="relative h-56 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1713846047266-12aa96cbbb6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMGFpcmNyYWZ0JTIwYWlyJTIwZnJlaWdodxlbnwxfHx8fDE3NzEyMDM5NzB8MA&ixlib=rb-4.1.0&q=80&w=1080" 
+                  src="https://images.unsplash.com/photo-1713846047266-12aa96cbbb6c" 
                   alt="Fret aérien" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />

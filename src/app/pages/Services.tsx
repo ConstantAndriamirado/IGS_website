@@ -16,7 +16,7 @@ export default function Services() {
       description: isFrench
         ? 'Organisation du transport maritime international, coordination portuaire et accompagnement administratif pour vos cargaisons.'
         : 'Organisation of international sea transport, port coordination and administrative support for your cargo.',
-      image: 'https://images.unsplash.com/photo-1634638022229-5a52221886dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHNoaXAlMjBwb3J0JTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE1ODQzNHww&ixlib=rb-4.1.0&q=80&w=1080'
+      image: 'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzAyNzh8MHwxfHNlYXJjaHwxfHxtYXJpbmUlMjBzaGlwfGVufDB8fHx8MTY5Mzc1OTExMw&ixlib=rb-4.0.3&q=80&w=1080'
     },
     {
       id: 'aerien',
@@ -34,7 +34,7 @@ export default function Services() {
       description: isFrench
         ? 'Transport routier fiable pour les liaisons nationales, régionales et transfrontalières avec suivi opérationnel.'
         : 'Reliable road transport for national, regional and cross-border links with operational tracking.',
-      image: 'https://images.unsplash.com/photo-1761666519980-e29488141562?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cnVjayUyMHRyYW5zcG9ydGF0aW9uJTIwbG9naXN0aWNzfGVufDF8fHx8MTc3MTE5ODgyNXww&ixlib=rb-4.1.0&q=80&w=1080'
+      image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzAyNzh8MHwxfHNlYXJjaHwxfHx0cnVjayUyMGNhcmJvbiUyMGxvZ2lzdGljc3xlbnwwfHx8fDE2OTM3NTkzNjU&ixlib=rb-4.0.3&q=80&w=1080'
     },
     {
       id: 'dedouanement',

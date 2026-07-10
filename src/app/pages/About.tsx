@@ -319,8 +319,8 @@ export default function About() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
-              src="https://images.unsplash.com/photo-1767620275245-70721d786653?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWFtJTIwcGhvdG8lMjBvZmZpY2UlMjBzdGFmZnxlbnwxfHx8fDE3NzEyNjY1NDR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Équipe IGS"
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzAyNzh8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjB0ZWFtJTIwcGhvdG8lMjBncm91cHxlbnwwfHx8fDE2OTM3NjAzMjM&ixlib=rb-4.0.3&q=80&w=1080"
+              alt="Professional team photo"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#232d37]/95 via-[#232d37]/85 to-[#232d37]/70"></div>

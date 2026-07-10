@@ -107,11 +107,11 @@ export function Header() {
               </div>
 
               <Link
-                to="/contact"
+                to="/portail-client"
                 className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-3 xl:px-6 py-2.5 rounded-lg transition-colors font-medium text-sm ml-1 flex-shrink-0"
               >
-                <span className="hidden xl:inline">{language === 'fr' ? 'Demander un devis' : 'Request a quote'}</span>
-                <span className="inline xl:hidden">{language === 'fr' ? 'Devis' : 'Quote'}</span>
+                <span className="hidden xl:inline">{language === 'fr' ? 'Portail Client' : 'Client Portal'}</span>
+                <span className="inline xl:hidden">{language === 'fr' ? 'Portail' : 'Portal'}</span>
               </Link>
             </div>
 
@@ -161,10 +161,10 @@ export function Header() {
               </button>
 
               <Link 
-                to="/contact" 
+                to="/portail-client" 
                 className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-6 py-3 rounded-full transition-colors font-medium text-center"
               >
-                {language === 'fr' ? 'Demander un devis' : 'Request a quote'}
+                {language === 'fr' ? 'Portail Client' : 'Client Portal'}
               </Link>
             </div>
           </nav>
