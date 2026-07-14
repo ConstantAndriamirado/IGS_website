@@ -40,10 +40,10 @@ export function Header() {
     { to: '/', label: isFrench ? 'Accueil' : 'Home' },
     { to: '/services', label: isFrench ? 'Nos Services' : 'Our Services' },
     { to: '/about', label: isFrench ? 'À propos' : 'About Us' },
-    { to: '/partners', label: isFrench ? 'Nos Partenaires' : 'Our Partners' },
-    { to: '/projects', label: isFrench ? 'Réalisations' : 'Projects' },
+    { to: '/projects', label: isFrench ? 'Nos Réalisations' : 'Our Projects' },
     { to: '/contact', label: 'Contact' },
   ];
+  const portalUrl = 'https://portail.igs-guinee.com';
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -106,13 +106,15 @@ export function Header() {
                 </div>
               </div>
 
-              <Link
-                to="/portail-client"
+              <a
+                href={portalUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-3 xl:px-6 py-2.5 rounded-lg transition-colors font-medium text-sm ml-1 flex-shrink-0"
               >
                 <span className="hidden xl:inline">{language === 'fr' ? 'Portail Client' : 'Client Portal'}</span>
                 <span className="inline xl:hidden">{language === 'fr' ? 'Portail' : 'Portal'}</span>
-              </Link>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -160,12 +162,14 @@ export function Header() {
                 {isFrench ? 'FR' : 'EN'}
               </button>
 
-              <Link 
-                to="/portail-client" 
+              <a
+                href={portalUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-6 py-3 rounded-full transition-colors font-medium text-center"
               >
                 {language === 'fr' ? 'Portail Client' : 'Client Portal'}
-              </Link>
+              </a>
             </div>
           </nav>
         </div>

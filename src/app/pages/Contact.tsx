@@ -20,7 +20,13 @@ export default function Contact() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // Simulation d'envoi - à connecter avec un backend réel
+    const existing = JSON.parse(localStorage.getItem('igs_contact_messages') || '[]');
+    const payload = {
+      id: Date.now(),
+      ...formData,
+      submittedAt: new Date().toISOString()
+    };
+    localStorage.setItem('igs_contact_messages', JSON.stringify([...existing, payload]));
     toast.success(isFrench ? 'Message envoyé avec succès! Nous vous répondrons dans les plus brefs délais.' : 'Message sent successfully! We will get back to you as soon as possible.');
     setFormData({
       name: '',

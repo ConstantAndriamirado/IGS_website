@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { MessageCircle } from 'lucide-react';
 
 export function WhatsAppButton() {
-  const phoneNumber = '224XXXXXXXXX'; // À remplacer par le vrai numéro
+  const phoneNumber = '+224612004903';
   const message = 'Bonjour IGS, je souhaite obtenir des informations sur vos services.';
   
   const handleClick = () => {

@@ -1,15 +1,15 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 import { RootLayout } from './components/RootLayout';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { BackToTop } from './components/BackToTop';
 import { WhatsAppButton } from './components/WhatsAppButton';
-import { AdminButton } from './components/AdminButton';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import About from './pages/About';
 import Projects from './pages/Projects';
+import QuoteRequest from './pages/QuoteRequest';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Search from './pages/Search';
@@ -33,9 +33,15 @@ function MainLayout({ children }: { children: React.ReactNode }) {
       <Footer />
       <BackToTop />
       <WhatsAppButton />
-      <AdminButton />
     </>
   );
+}
+
+function AdminRoute() {
+  const location = window.location;
+  const isAllowed = location.search.includes('access=igs-admin') || window.localStorage.getItem('igs_admin_access') === 'true';
+
+  return isAllowed ? <Admin /> : <Navigate to="/" replace />;
 }
 
 export const router = createBrowserRouter([
@@ -79,6 +85,10 @@ export const router = createBrowserRouter([
         element: <MainLayout><Contact /></MainLayout>,
       },
       {
+        path: "/quote-request",
+        element: <MainLayout><QuoteRequest /></MainLayout>,
+      },
+      {
         path: "/partners",
         element: <MainLayout><Partners /></MainLayout>,
       },
@@ -100,7 +110,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <Admin />,
+        element: <AdminRoute />,
       },
       {
         path: "*",

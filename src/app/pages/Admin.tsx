@@ -16,7 +16,11 @@ import {
   Download,
   FileCode,
   Globe,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Mail,
+  Briefcase,
+  RotateCcw,
+  AlertTriangle
 } from 'lucide-react';
 import {
   Line,
@@ -33,38 +37,97 @@ import {
   ResponsiveContainer
 } from 'recharts';
 
+type SubmissionStatus = 'pending' | 'processed' | 'rejected';
+
+interface ContactMessage {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  phoneCountryCode: string;
+  service: string;
+  message: string;
+  submittedAt: string;
+  status: SubmissionStatus;
+}
+
+interface QuoteRequestEntry {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  service: string;
+  origin: string;
+  destination: string;
+  cargoType: string;
+  message: string;
+  submittedAt: string;
+  status: SubmissionStatus;
+}
+
+const loadStoredItems = <T,>(key: string, fallback: T[]): T[] => {
+  if (typeof window === 'undefined') return fallback;
+  try {
+    const stored = window.localStorage.getItem(key);
+    return stored ? JSON.parse(stored) : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
 export default function Admin() {
   const { language } = useLanguage();
   const isFrench = language === 'fr';
 
   const [activeSection, setActiveSection] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [contactMessages, setContactMessages] = useState<ContactMessage[]>(() => loadStoredItems<ContactMessage[]>('igs_contact_messages', []));
+  const [quoteRequests, setQuoteRequests] = useState<QuoteRequestEntry[]>(() => loadStoredItems<QuoteRequestEntry[]>('igs_quote_requests', []));
 
-  // Mock data pour les statistiques
+  const saveToStorage = (key: string, value: unknown) => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    }
+  };
+
+  const updateSubmissionStatus = (type: 'contact' | 'quote', id: number, status: SubmissionStatus) => {
+    if (type === 'contact') {
+      const next = contactMessages.map((item) => (item.id === id ? { ...item, status } : item));
+      setContactMessages(next);
+      saveToStorage('igs_contact_messages', next);
+      return;
+    }
+
+    const next = quoteRequests.map((item) => (item.id === id ? { ...item, status } : item));
+    setQuoteRequests(next);
+    saveToStorage('igs_quote_requests', next);
+  };
+
   const stats = [
     {
-      title: 'Visiteurs (Mois)',
-      value: '12,458',
-      change: '+12.5%',
-      icon: Eye,
+      title: isFrench ? 'Messages reçus' : 'Messages received',
+      value: contactMessages.length.toString(),
+      change: '+0%',
+      icon: Mail,
       color: 'bg-blue-500'
     },
     {
-      title: 'Demandes de Contact',
-      value: '142',
-      change: '+8.2%',
-      icon: MessageSquare,
+      title: isFrench ? 'Demandes de devis' : 'Quote requests',
+      value: quoteRequests.length.toString(),
+      change: '+0%',
+      icon: Briefcase,
       color: 'bg-[#E85E27]'
     },
     {
-      title: 'Articles Publiés',
-      value: '38',
-      change: '+3',
+      title: isFrench ? 'Articles publiés' : 'Published articles',
+      value: '6',
+      change: '+2',
       icon: FileText,
       color: 'bg-green-500'
     },
     {
-      title: 'Pages Actives',
+      title: isFrench ? 'Pages actives' : 'Active pages',
       value: '12',
       change: '+2',
       icon: FileCode,
@@ -93,47 +156,18 @@ export default function Admin() {
 
   const COLORS = ['#E85E27', '#232d37', '#3b82f6', '#10b981'];
 
-  // Données pour les contacts récents
-  const recentContacts = [
-    {
-      id: 1,
-      name: 'Amadou Diallo',
-      email: 'amadou@exemple.com',
-      service: 'Fret Maritime',
-      date: '07/03/2026',
-      status: 'pending'
-    },
-    {
-      id: 2,
-      name: 'Fatoumata Bah',
-      email: 'fatoumata@exemple.com',
-      service: 'Dédouanement',
-      date: '06/03/2026',
-      status: 'processed'
-    },
-    {
-      id: 3,
-      name: 'Mamadou Sylla',
-      email: 'mamadou@exemple.com',
-      service: 'Fret Aérien',
-      date: '05/03/2026',
-      status: 'pending'
-    },
-    {
-      id: 4,
-      name: 'Aissatou Camara',
-      email: 'aissatou@exemple.com',
-      service: 'Fret Routier',
-      date: '04/03/2026',
-      status: 'rejected'
-    }
-  ];
+  const recentContacts = [...contactMessages]
+    .sort((a, b) => Number(b.id) - Number(a.id))
+    .slice(0, 4);
 
-  // Articles de blog récents
+  const recentQuotes = [...quoteRequests]
+    .sort((a, b) => Number(b.id) - Number(a.id))
+    .slice(0, 4);
+
   const recentArticles = [
     {
       id: 1,
-      title: 'Les nouvelles réglementations douanières 2026',
+      title: isFrench ? 'Les nouvelles réglementations douanières 2026' : 'The new customs regulations for 2026',
       author: 'Admin IGS',
       date: '05/03/2026',
       status: 'published',
@@ -141,7 +175,7 @@ export default function Admin() {
     },
     {
       id: 2,
-      title: 'Optimiser vos coûts de transport maritime',
+      title: isFrench ? 'Optimiser vos coûts de transport maritime' : 'Optimizing your maritime transport costs',
       author: 'Admin IGS',
       date: '01/03/2026',
       status: 'published',
@@ -149,7 +183,7 @@ export default function Admin() {
     },
     {
       id: 3,
-      title: 'Guide complet du dédouanement en Guinée',
+      title: isFrench ? 'Guide complet du dédouanement en Guinée' : 'Complete customs clearance guide in Guinea',
       author: 'Admin IGS',
       date: '28/02/2026',
       status: 'draft',
@@ -158,10 +192,10 @@ export default function Admin() {
   ];
 
   const menuItems = [
-    { id: 'dashboard', name: 'Tableau de bord', icon: LayoutDashboard },
-    { id: 'articles', name: 'Articles', icon: FileText },
-    { id: 'contacts', name: 'Contacts', icon: MessageSquare },
-    { id: 'settings', name: 'Paramètres', icon: Settings }
+    { id: 'dashboard', name: isFrench ? 'Tableau de bord' : 'Dashboard', icon: LayoutDashboard },
+    { id: 'articles', name: isFrench ? 'Articles' : 'Articles', icon: FileText },
+    { id: 'contacts', name: isFrench ? 'Contacts' : 'Contacts', icon: MessageSquare },
+    { id: 'settings', name: isFrench ? 'Paramètres' : 'Settings', icon: Settings }
   ];
 
   const renderDashboard = () => (
@@ -274,40 +308,36 @@ export default function Admin() {
           className="bg-white rounded-xl shadow-lg border border-gray-100"
         >
           <div className="p-6 border-b border-gray-100">
-            <h3 className="text-lg font-semibold text-[#232d37]">Demandes Récentes</h3>
+            <h3 className="text-lg font-semibold text-[#232d37]">{isFrench ? 'Messages récents' : 'Recent messages'}</h3>
           </div>
           <div className="divide-y divide-gray-100">
-            {recentContacts.map((contact) => (
+            {recentContacts.length > 0 ? recentContacts.map((contact) => (
               <div key={contact.id} className="p-4 hover:bg-gray-50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="font-semibold text-[#232d37]">{contact.name}</h4>
                   {contact.status === 'pending' && (
-                    <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">
-                      En attente
-                    </span>
+                    <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'En attente' : 'Pending'}</span>
                   )}
                   {contact.status === 'processed' && (
-                    <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
-                      Traité
-                    </span>
+                    <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'Traité' : 'Processed'}</span>
                   )}
                   {contact.status === 'rejected' && (
-                    <span className="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">
-                      Refusé
-                    </span>
+                    <span className="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'Refusé' : 'Rejected'}</span>
                   )}
                 </div>
                 <p className="text-sm text-gray-600 mb-1">{contact.email}</p>
                 <div className="flex items-center justify-between text-xs text-gray-500">
                   <span>{contact.service}</span>
-                  <span>{contact.date}</span>
+                  <span>{new Date(contact.submittedAt).toLocaleDateString()}</span>
                 </div>
               </div>
-            ))}
+            )) : (
+              <div className="p-6 text-sm text-gray-500">{isFrench ? 'Aucun message reçu pour le moment.' : 'No messages received yet.'}</div>
+            )}
           </div>
         </motion.div>
 
-        {/* Recent Articles */}
+        {/* Recent Quotes */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -315,30 +345,32 @@ export default function Admin() {
           className="bg-white rounded-xl shadow-lg border border-gray-100"
         >
           <div className="p-6 border-b border-gray-100">
-            <h3 className="text-lg font-semibold text-[#232d37]">Articles Récents</h3>
+            <h3 className="text-lg font-semibold text-[#232d37]">{isFrench ? 'Devis récents' : 'Recent quotes'}</h3>
           </div>
           <div className="divide-y divide-gray-100">
-            {recentArticles.map((article) => (
-              <div key={article.id} className="p-4 hover:bg-gray-50 transition-colors">
+            {recentQuotes.length > 0 ? recentQuotes.map((quote) => (
+              <div key={quote.id} className="p-4 hover:bg-gray-50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-semibold text-[#232d37] text-sm">{article.title}</h4>
-                  {article.status === 'published' && (
-                    <CheckCircle className="text-green-500" size={16} />
+                  <h4 className="font-semibold text-[#232d37]">{quote.company || quote.name}</h4>
+                  {quote.status === 'pending' && (
+                    <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'En attente' : 'Pending'}</span>
                   )}
-                  {article.status === 'draft' && <Clock className="text-gray-400" size={16} />}
+                  {quote.status === 'processed' && (
+                    <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'Traité' : 'Processed'}</span>
+                  )}
+                  {quote.status === 'rejected' && (
+                    <span className="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'Refusé' : 'Rejected'}</span>
+                  )}
                 </div>
+                <p className="text-sm text-gray-600 mb-1">{quote.service}</p>
                 <div className="flex items-center justify-between text-xs text-gray-500">
-                  <span>{article.author}</span>
-                  <div className="flex items-center gap-3">
-                    <span className="flex items-center gap-1">
-                      <Eye size={12} />
-                      {article.views}
-                    </span>
-                    <span>{article.date}</span>
-                  </div>
+                  <span>{quote.origin} → {quote.destination}</span>
+                  <span>{new Date(quote.submittedAt).toLocaleDateString()}</span>
                 </div>
               </div>
-            ))}
+            )) : (
+              <div className="p-6 text-sm text-gray-500">{isFrench ? 'Aucune demande de devis enregistrée.' : 'No quote requests recorded yet.'}</div>
+            )}
           </div>
         </motion.div>
       </div>
@@ -351,23 +383,83 @@ export default function Admin() {
         return renderDashboard();
       case 'articles':
         return (
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-[#232d37] mb-4">Gestion des Articles</h2>
-            <p className="text-gray-600">Section en développement...</p>
+          <div className="bg-white rounded-xl shadow-lg p-6 space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-[#232d37] mb-2">{isFrench ? 'Gestion des articles' : 'Article management'}</h2>
+                <p className="text-gray-600">{isFrench ? 'Prévisualisation du contenu publié et des brouillons.' : 'Preview of published content and drafts.'}</p>
+              </div>
+              <button className="bg-[#E85E27] text-white px-4 py-2 rounded-lg font-medium">{isFrench ? 'Ajouter un article' : 'Add article'}</button>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {recentArticles.map((article) => (
+                <div key={article.id} className="border border-gray-200 rounded-xl p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-semibold text-[#232d37]">{article.title}</h3>
+                    {article.status === 'published' ? <CheckCircle className="text-green-500" size={18} /> : <Clock className="text-gray-400" size={18} />}
+                  </div>
+                  <p className="text-sm text-gray-500 mb-4">{article.author} • {article.date}</p>
+                  <div className="flex items-center justify-between text-sm text-gray-600">
+                    <span>{article.views} vues</span>
+                    <span className="text-[#E85E27] font-medium">{article.status === 'published' ? (isFrench ? 'Publié' : 'Published') : (isFrench ? 'Brouillon' : 'Draft')}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         );
       case 'contacts':
         return (
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-[#232d37] mb-4">Gestion des Contacts</h2>
-            <p className="text-gray-600">Section en développement...</p>
+          <div className="bg-white rounded-xl shadow-lg p-6 space-y-6">
+            <div>
+              <h2 className="text-2xl font-bold text-[#232d37] mb-2">{isFrench ? 'Gestion des contacts' : 'Contact management'}</h2>
+              <p className="text-gray-600">{isFrench ? 'Suivi des messages reçus depuis le formulaire de contact.' : 'Tracking of messages received from the contact form.'}</p>
+            </div>
+            <div className="space-y-4">
+              {contactMessages.length > 0 ? contactMessages.map((message) => (
+                <div key={message.id} className="border border-gray-200 rounded-xl p-5">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-3">
+                    <div>
+                      <h3 className="font-semibold text-[#232d37]">{message.name}</h3>
+                      <p className="text-sm text-gray-500">{message.email} • {message.phone}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {message.status === 'pending' && <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'En attente' : 'Pending'}</span>}
+                      {message.status === 'processed' && <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'Traité' : 'Processed'}</span>}
+                      {message.status === 'rejected' && <span className="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">{isFrench ? 'Refusé' : 'Rejected'}</span>}
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-3">{message.service}</p>
+                  <p className="text-sm text-gray-700 mb-4">{message.message}</p>
+                  <div className="flex flex-wrap gap-2">
+                    <button onClick={() => updateSubmissionStatus('contact', message.id, 'processed')} className="px-3 py-2 rounded-lg bg-green-600 text-white text-sm">{isFrench ? 'Marquer traité' : 'Mark processed'}</button>
+                    <button onClick={() => updateSubmissionStatus('contact', message.id, 'rejected')} className="px-3 py-2 rounded-lg bg-red-600 text-white text-sm">{isFrench ? 'Refuser' : 'Reject'}</button>
+                    <button onClick={() => updateSubmissionStatus('contact', message.id, 'pending')} className="px-3 py-2 rounded-lg bg-gray-100 text-gray-700 text-sm">{isFrench ? 'Remettre en attente' : 'Set pending'}</button>
+                  </div>
+                </div>
+              )) : (
+                <div className="text-sm text-gray-500">{isFrench ? 'Aucun message enregistré pour le moment.' : 'No messages recorded yet.'}</div>
+              )}
+            </div>
           </div>
         );
       case 'settings':
         return (
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-[#232d37] mb-4">Paramètres</h2>
-            <p className="text-gray-600">Section en développement...</p>
+          <div className="bg-white rounded-xl shadow-lg p-6 space-y-6">
+            <div>
+              <h2 className="text-2xl font-bold text-[#232d37] mb-2">{isFrench ? 'Paramètres de l’espace admin' : 'Admin space settings'}</h2>
+              <p className="text-gray-600">{isFrench ? 'Le tableau de bord lit actuellement les données depuis le stockage local du navigateur.' : 'The dashboard currently reads data from the browser local storage.'}</p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="border border-gray-200 rounded-xl p-5">
+                <h3 className="font-semibold text-[#232d37] mb-2">{isFrench ? 'Stockage local' : 'Local storage'}</h3>
+                <p className="text-sm text-gray-600">{isFrench ? 'Les soumissions de contact et de devis sont conservées localement pour cette version de démonstration.' : 'Contact and quote submissions are stored locally for this demo version.'}</p>
+              </div>
+              <div className="border border-gray-200 rounded-xl p-5">
+                <h3 className="font-semibold text-[#232d37] mb-2">{isFrench ? 'Prochaine étape' : 'Next step'}</h3>
+                <p className="text-sm text-gray-600">{isFrench ? 'Connecter ce panneau à une base de données ou à un backend métier pour une gestion en temps réel.' : 'Connect this panel to a database or business backend for real-time management.'}</p>
+              </div>
+            </div>
           </div>
         );
       default:

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Target, Eye, Users, Shield, Zap, Heart, CheckCircle2, TrendingUp, Facebook, Linkedin } from 'lucide-react';
+import { Target, Eye, Users, Shield, Zap, Heart, CheckCircle2, TrendingUp, Mail, Phone } from 'lucide-react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -42,22 +42,22 @@ export default function About() {
     {
       name: 'Ibrahima Diallo',
       role: isFrench ? 'Directeur Général' : 'Managing Director',
-      image: 'https://images.unsplash.com/photo-1758518731468-98e90ffd7430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHRlYW18ZW58MXx8fHwxNzcxMTU5NTI4fDA&ixlib=rb-4.1.0&q=80&w=400'
+      image: 'https://images.unsplash.com/photo-1666866834805-8cc91d4774ac'
     },
     {
       name: 'Fatoumata Camara',
       role: isFrench ? 'Directrice des Opérations' : 'Operations Director',
-      image: 'https://images.unsplash.com/photo-1758518731468-98e90ffd7430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHRlYW18ZW58MXx8fHwxNzcxMTU5NTI4fDA&ixlib=rb-4.1.0&q=80&w=400'
+      image: 'https://images.unsplash.com/photo-1655720357761-f18ea9e5e7e6'
     },
     {
       name: 'Mamadou Bah',
       role: isFrench ? 'Responsable Douane' : 'Customs Manager',
-      image: 'https://images.unsplash.com/photo-1758518731468-98e90ffd7430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHRlYW18ZW58MXx8fHwxNzcxMTU5NTI4fDA&ixlib=rb-4.1.0&q=80&w=400'
+      image: 'https://images.unsplash.com/photo-1614023342667-6f060e9d1e04'
     },
     {
       name: 'Aissatou Sylla',
       role: isFrench ? 'Responsable Fret' : 'Freight Manager',
-      image: 'https://images.unsplash.com/photo-1758518731468-98e90ffd7430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHRlYW18ZW58MXx8fHwxNzcxMTU5NTI4fDA&ixlib=rb-4.1.0&q=80&w=400'
+      image: '/src/assets/images/Aissatou Sylla.png'
     }
   ];
 
@@ -110,8 +110,8 @@ export default function About() {
             </h1>
             <p className="text-xl text-gray-200 leading-relaxed">
               {isFrench
-                ? 'IGS est une entreprise guinéenne spécialisée dans le transit, le dédouanement, le fret et la logistique internationale, au service des entreprises qui veulent agir avec efficacité et conformité.'
-                : 'IGS is a Guinean company specialized in transit, customs clearance, freight and international logistics, supporting businesses that want to operate with efficiency and compliance.'}
+                ? 'IGS est une entreprise guinéenne spécialisée dans l’optimisation du transit, du dédouanement, du fret et de la logistique internationale. Nous mettons notre expertise au service des entreprises qui veulent avancer vite, sécuriser leurs flux et réduire les risques de retard ou de non-conformité.'
+                : 'IGS is a Guinean company specialized in optimizing transit, customs clearance, freight and international logistics. We put our expertise at the service of companies that want to move fast, secure their flows and reduce the risk of delay or non-compliance.'}
             </p>
           </motion.div>
         </div>
@@ -131,18 +131,18 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                {isFrench ? 'Fondée en 2012, ' : 'Founded in 2012, '}<strong className="text-[#E85E27]">Ibrahima Golden Services (IGS)</strong>{isFrench ? ' s\'est rapidement imposée comme un acteur de confiance pour les entreprises qui recherchent une réponse fiable en matière de transit douanier, de dédouanement et de logistique.' : ' quickly established itself as a trusted actor for companies looking for reliable support in customs transit, clearance and logistics.'}
+                {isFrench ? 'Fondée en 2023, ' : 'Founded in 2023, '}<strong className="text-[#E85E27]">Ibrahima Golden Services (IGS)</strong>{isFrench ? ' s\'est rapidement imposée comme un acteur de confiance pour les entreprises qui veulent avancer sans friction dans un environnement logistique de plus en plus exigeant.' : ' quickly established itself as a trusted operator for companies that want to move forward without friction in an increasingly demanding logistics environment.'}
               </p>
               <p>
                 {isFrench
-                  ? 'Notre expertise couvre l\'ensemble de la chaîne logistique internationale : fret maritime, aérien, routier, gestion documentaire et conseil. Nous accompagnons chaque client avec une approche pragmatique, réactive et conforme aux exigences du commerce international.'
-                  : 'Our expertise covers the full international logistics chain: sea, air and road freight, document management and advisory services. We support each client with a pragmatic, responsive approach that meets the demands of international trade.'}
+                  ? 'Notre expertise couvre l\'ensemble de la chaîne logistique internationale : fret maritime, aérien, routier, gestion documentaire, dédouanement et conseil. Nous accompagnons chaque client avec une approche pragmatique, réactive et alignée sur les réalités du commerce international.'
+                  : 'Our expertise covers the full international logistics chain: sea, air and road freight, document management, customs clearance and advisory services. We support each client with a pragmatic, responsive approach aligned with the realities of international trade.'}
               </p>
               <p>
                 {isFrench ? (
-                  <>Aujourd&apos;hui, IGS c&apos;est plus de <strong className="text-[#E85E27]">12 années d&apos;expérience</strong>, <strong className="text-[#E85E27]">1500+ dossiers traités</strong> avec succès, et un réseau de <strong className="text-[#E85E27]">80+ partenaires internationaux</strong> dans les plus grands ports et aéroports mondiaux.</>
+                  <>Aujourd&apos;hui, IGS réunit <strong className="text-[#E85E27]">plus de 4 années d&apos;expérience</strong>, <strong className="text-[#E85E27]">2000+ expéditions réalisées</strong> et un réseau de <strong className="text-[#E85E27]">partenaires stratégiques</strong> capables de répondre à des besoins variés, rapides et sensibles.</>
                 ) : (
-                  <>Today, IGS has <strong className="text-[#E85E27]">over 12 years of experience</strong>, <strong className="text-[#E85E27]">1500+ files successfully handled</strong>, and a network of <strong className="text-[#E85E27]">80+ international partners</strong> in the world&apos;s major ports and airports.</>
+                  <>Today, IGS brings together <strong className="text-[#E85E27]">more than 4 years of experience</strong>, <strong className="text-[#E85E27]">2000+ shipments handled</strong> and a network of <strong className="text-[#E85E27]">strategic partners</strong> capable of responding to varied, fast and sensitive needs.</>
                 )}
               </p>
             </div>
@@ -156,20 +156,20 @@ export default function About() {
             className="grid grid-cols-2 gap-4"
           >
             <div className="bg-[#E85E27] text-white p-6 rounded-xl">
-              <div className="text-4xl font-bold mb-2">1500+</div>
-              <div className="text-sm">{isFrench ? 'Dossiers Traités' : 'Files Handled'}</div>
+              <div className="text-4xl font-bold mb-2">2000+</div>
+              <div className="text-sm">{isFrench ? 'Expéditions Réalisées' : 'Shipments Handled'}</div>
             </div>
             <div className="bg-[#232d37] text-white p-6 rounded-xl">
-              <div className="text-4xl font-bold mb-2">80+</div>
-              <div className="text-sm">{isFrench ? 'Partenaires' : 'Partners'}</div>
+              <div className="text-4xl font-bold mb-2">4+</div>
+              <div className="text-sm">{isFrench ? 'Années d’Expérience' : 'Years of Experience'}</div>
             </div>
             <div className="bg-[#232d37] text-white p-6 rounded-xl">
-              <div className="text-4xl font-bold mb-2">12+</div>
-              <div className="text-sm">{isFrench ? 'Années d\'Expérience' : 'Years of Experience'}</div>
-            </div>
-            <div className="bg-[#E85E27] text-white p-6 rounded-xl">
               <div className="text-4xl font-bold mb-2">24/7</div>
               <div className="text-sm">{isFrench ? 'Support Client' : 'Customer Support'}</div>
+            </div>
+            <div className="bg-[#E85E27] text-white p-6 rounded-xl">
+              <div className="text-4xl font-bold mb-2">100%</div>
+              <div className="text-sm">{isFrench ? 'Conformité' : 'Compliance'}</div>
             </div>
           </motion.div>
         </div>
@@ -192,8 +192,8 @@ export default function About() {
               <h3 className="text-2xl font-bold text-[#232d37] mb-4">{isFrench ? 'Notre Mission' : 'Our Mission'}</h3>
               <p className="text-gray-600 leading-relaxed">
                 {isFrench
-                  ? 'Faciliter le commerce international de nos clients en leur offrant des solutions logistiques complètes, fiables et conformes aux normes les plus strictes. Nous nous engageons à simplifier la complexité des opérations douanières et de transport.'
-                  : 'Facilitate our clients\' international trade by offering complete, reliable logistics solutions that meet the strictest standards. We are committed to simplifying the complexity of customs and transport operations.'}
+                  ? 'Faciliter le commerce international de nos clients en leur offrant des solutions logistiques complètes, fiables et conformes aux règles les plus strictes. Nous simplifions la complexité des opérations douanières et de transport pour qu’elles restent maîtrisables à chaque étape.'
+                  : 'Facilitate our clients\' international trade by offering complete, reliable logistics solutions that meet the strictest rules. We simplify the complexity of customs and transport operations so they remain manageable at every stage.'}
               </p>
             </motion.div>
 
@@ -319,7 +319,7 @@ export default function About() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
-              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzAyNzh8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjB0ZWFtJTIwcGhvdG8lMjBncm91cHxlbnwwfHx8fDE2OTM3NjAzMjM&ixlib=rb-4.0.3&q=80&w=1080"
+              src="https://images.unsplash.com/photo-1716399233137-5f18a8e3520d"
               alt="Professional team photo"
               className="w-full h-full object-cover"
             />
@@ -366,10 +366,10 @@ export default function About() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-[#232d37] mb-4">
-              {isFrench ? 'Nos Dirigeants' : 'Our Leaders'}
+              {isFrench ? 'Direction IGS' : 'IGS leadership'}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              {isFrench ? 'Des professionnels expérimentés dédiés à votre réussite' : 'Experienced professionals dedicated to your success'}
+              {isFrench ? 'Une équipe de managers opérationnels et experts dédiés à la qualité de service et à la satisfaction client.' : 'A team of operational managers and experts dedicated to service quality and customer satisfaction.'}
             </p>
           </motion.div>
 
@@ -392,22 +392,20 @@ export default function About() {
                   {/* Social Icons Overlay */}
                   <div className="absolute inset-0 bg-[#232d37]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                     <a
-                      href="#"
-                      title="Facebook"
-                      aria-label="Facebook"
-                      className="w-10 h-10 bg-[#1877f2] rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
-                      onClick={(e) => e.preventDefault()}
+                      href="mailto:contact@igservices.com?subject=Contact%20IGS"
+                      title="Email"
+                      aria-label="Email"
+                      className="w-10 h-10 bg-[#E85E27] rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
                     >
-                      <Facebook size={20} />
+                      <Mail size={20} />
                     </a>
                     <a
-                      href="#"
-                      title="LinkedIn"
-                      aria-label="LinkedIn"
-                      className="w-10 h-10 bg-[#0a66c2] rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
-                      onClick={(e) => e.preventDefault()}
+                      href="tel:+224612004903"
+                      title="Téléphone"
+                      aria-label="Téléphone"
+                      className="w-10 h-10 bg-[#E85E27]/90 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
                     >
-                      <Linkedin size={20} />
+                      <Phone size={20} />
                     </a>
                   </div>
                 </div>

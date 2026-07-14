@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { ArrowRight, LucideIcon } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ServiceCardProps {
   icon: LucideIcon;
@@ -11,13 +12,16 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ icon: Icon, title, description, link, image }: ServiceCardProps) {
+  const { language } = useLanguage();
+  const isFrench = language === 'fr';
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="group bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+      className="group h-full bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
     >
       {image && (
         <div className="h-48 overflow-hidden">
@@ -28,18 +32,18 @@ export function ServiceCard({ icon: Icon, title, description, link, image }: Ser
           />
         </div>
       )}
-      <div className="p-6">
-        <div className="w-14 h-14 bg-[#E85E27]/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#E85E27] transition-colors">
-          <Icon size={28} className="text-[#E85E27] group-hover:text-white transition-colors" />
+      <div className="p-6 flex flex-col h-[calc(100%-12rem)]">
+        <div className="w-12 h-12 rounded-xl bg-[#E85E27]/10 flex items-center justify-center mb-4 text-[#E85E27]">
+          <Icon size={22} />
         </div>
         <h3 className="text-xl font-semibold mb-3 text-[#232d37]">{title}</h3>
-        <p className="text-gray-600 mb-4 line-clamp-3">{description}</p>
+        <p className="text-gray-600 mb-5 line-clamp-3 leading-relaxed">{description}</p>
         {link && (
           <Link 
             to={link}
-            className="inline-flex items-center gap-2 text-[#E85E27] font-medium hover:gap-3 transition-all group/link"
+            className="mt-auto inline-flex items-center gap-2 text-[#E85E27] font-medium hover:gap-3 transition-all group/link"
           >
-            En savoir plus
+            {isFrench ? 'En savoir plus' : 'Learn more'}
             <ArrowRight size={18} className="group-hover/link:translate-x-1 transition-transform" />
           </Link>
         )}

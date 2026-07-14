@@ -13,7 +13,7 @@ export default function Home() {
       description: language === 'fr'
         ? 'Coordination portuaire et transport maritime pour vos expéditions import/export, avec suivi et sécurité.'
         : 'Port coordination and international sea freight for your import/export shipments, with tracking and security.',
-      link: '/services',
+      link: '/services/maritime',
       image: 'https://images.unsplash.com/photo-1699588999949-e25959a59550'
     },
     {
@@ -22,7 +22,7 @@ export default function Home() {
       description: language === 'fr'
         ? 'Solutions aériennes rapides et fiables pour les cargaisons urgentes, sensibles ou à haute valeur.'
         : 'Fast and reliable air freight solutions for urgent, sensitive and high-value cargo.',
-      link: '/services',
+      link: '/services/aerien',
       image: 'https://images.unsplash.com/photo-1720428112577-528107b9c140'
     },
     {
@@ -31,7 +31,7 @@ export default function Home() {
       description: language === 'fr'
         ? 'Transport routier sécurisé et ponctuel pour les liaisons nationales, régionales et transfrontalières.'
         : 'Secure and punctual road transport for national, regional and cross-border movements.',
-      link: '/services',
+      link: '/services/routier',
       image: 'https://plus.unsplash.com/premium_photo-1661962316679-cd9b3b70bcaa'
     },
     {
@@ -40,7 +40,7 @@ export default function Home() {
       description: language === 'fr'
         ? 'Gestion documentaire, procédures import/export et conformité douanière pour des opérations sans friction.'
         : 'Document management, import/export procedures and customs compliance for smooth operations.',
-      link: '/services',
+      link: '/services/dedouanement',
       image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492'
     }
   ];
@@ -97,24 +97,23 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                {language === 'fr' ? 'Votre partenaire stratégique pour le' : 'Your strategic partner for'}{' '}
-                <span className="text-[#E85E27]">{language === 'fr' ? 'transit, le dédouanement et la logistique' : 'transit, customs clearance and logistics'}</span>
+                {language === 'fr' ? 'Votre partenaire stratégique pour un commerce international fluide' : 'Your strategic partner for smooth international trade'}
               </h1>
-              <p className="text-xl text-gray-200 mb-8">
+              <p className="text-xl text-gray-200 mb-8 max-w-3xl">
                 {language === 'fr'
-                  ? 'IGS accompagne les importateurs, exportateurs et entreprises industrielles dans la gestion de leurs opérations logistiques avec efficacité, conformité et réactivité.'
-                  : 'IGS supports importers, exporters and industrial companies in the management of their logistics operations with efficiency, compliance and responsiveness.'}
+                  ? 'De la préparation documentaire à la livraison finale, IGS organise chaque étape avec rapidité, conformité et visibilité pour vous faire gagner en sérénité.'
+                  : 'From document preparation to final delivery, IGS manages every step with speed, compliance and visibility so you can operate with confidence.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/contact"
+                  to="/quote-request"
                   className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2 group"
                 >
                   {language === 'fr' ? 'Demander un devis' : 'Request a quote'}
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
                 </Link>
                 <Link
-                  to="/portail-client"
+                  to="/contact"
                   className="bg-white hover:bg-gray-100 text-[#232d37] px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
                 >
                   {language === 'fr' ? 'Nous contacter' : 'Contact us'}
@@ -159,12 +158,12 @@ export default function Home() {
                 </span>
               </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-[#232d37] mb-6 leading-tight">
-                {language === 'fr' ? 'Une présence fiable pour chaque opération internationale' : 'A reliable presence for every international operation'}
+                {language === 'fr' ? 'Une présence fiable pour chaque opération qui doit avancer' : 'A dependable presence for every operation that must move forward'}
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
                 {language === 'fr'
-                  ? 'IGS met son réseau, son expertise réglementaire et son savoir-faire opérationnel au service de vos projets de transport, de dédouanement et de logistique. Nous sécurisons chaque étape, de la documentation à la livraison finale.'
-                  : 'IGS puts its network, regulatory expertise and operational know-how at the service of your transport, customs and logistics projects. We secure every step, from documentation to final delivery.'}
+                  ? 'IGS accompagne les entreprises qui doivent importer, exporter ou faire évoluer leurs flux de marchandises sans compromis sur la conformité, les délais ou la qualité du suivi.'
+                  : 'IGS supports companies that need to import, export or expand their cargo flows without compromising compliance, deadlines or service quality.'}
               </p>
 
               {/* Checkmarks List */}
@@ -254,13 +253,13 @@ export default function Home() {
                   <>
                     Des solutions complètes
                     <br />
-                    pour chaque étape du commerce international
+                    pour sécuriser votre chaîne logistique
                   </>
                 ) : (
                   <>
                     Complete solutions
                     <br />
-                    for every step of international trade
+                    to secure your logistics chain
                   </>
                 )}
               </h2>
@@ -304,7 +303,7 @@ export default function Home() {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1659353741664-f8d3ae82f90b" 
+                  src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0" 
                   alt="IGS Professional Team" 
                   className="w-full h-[500px] object-cover"
                 />
@@ -325,14 +324,14 @@ export default function Home() {
                 </h2>
                 <p className="text-gray-300 mb-8 leading-relaxed">
                   {language === 'fr'
-                    ? 'En choisissant IGS, vous pouvez être sûr de recevoir des services de transit douanier de haute qualité, adaptés à vos besoins spécifiques. Contactez-nous aujourd\'hui pour en savoir plus sur comment nous pouvons vous aider !'
-                    : 'By choosing IGS, you can be sure to receive high-quality customs transit services tailored to your specific needs. Contact us today to learn more about how we can help you!'}
+                    ? 'En choisissant IGS, vous gagnez en visibilité, en réactivité et en assurance opérationnelle. Nous transformons la complexité logistique en un avantage concret pour votre activité.'
+                    : 'By choosing IGS, you gain visibility, responsiveness and operational peace of mind. We turn logistics complexity into a concrete advantage for your business.'}
                 </p>
                 <Link
                   to="/contact"
                   className="inline-flex items-center gap-2 bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-3.5 rounded-lg transition-colors font-medium text-base"
                 >
-                  Contactez-Nous
+                  {language === 'fr' ? 'Contactez-nous' : 'Contact us'}
                   <ArrowRight size={20} />
                 </Link>
               </div>
@@ -344,8 +343,8 @@ export default function Home() {
                     <TruckIcon size={32} className="text-[#E85E27]" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-white">+1.5K</div>
-                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Dossiers Traités' : 'Files handled'}</div>
+                    <div className="text-3xl font-bold text-white">2000+</div>
+                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Expéditions Réalisées' : 'Shipments handled'}</div>
                   </div>
                 </div>
 
@@ -354,8 +353,8 @@ export default function Home() {
                     <Globe size={32} className="text-[#E85E27]" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-white">80+</div>
-                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Partenaires' : 'Partners'}</div>
+                    <div className="text-3xl font-bold text-white">4+</div>
+                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Années d’Expérience' : 'Years of experience'}</div>
                   </div>
                 </div>
 
@@ -364,8 +363,8 @@ export default function Home() {
                     <Shield size={32} className="text-[#E85E27]" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-white">{language === 'fr' ? 'Certifié' : 'Certified'}</div>
-                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Agrément Douanier' : 'Customs accreditation'}</div>
+                    <div className="text-3xl font-bold text-white">24/7</div>
+                    <div className="text-gray-300 text-sm">{language === 'fr' ? 'Support Client' : 'Customer support'}</div>
                   </div>
                 </div>
               </div>
@@ -393,6 +392,10 @@ export default function Home() {
                   ? 'IGS traite quotidiennement des opérations de dédouanement complexes avec une expertise reconnue dans le transit maritime, aérien et routier.'
                   : 'IGS handles complex customs operations every day with recognized expertise in maritime, air and road transit.'}
               </p>
+              <Link to="/projects" className="inline-flex items-center gap-2 text-[#E85E27] font-semibold hover:text-[#d14d1a] transition-colors mb-8">
+                {language === 'fr' ? 'Découvrir nos réalisations' : 'Discover our projects'}
+                <ArrowRight size={18} />
+              </Link>
 
               {/* Progress Bars */}
               <div className="space-y-6">
@@ -521,9 +524,9 @@ export default function Home() {
                   01
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Demande & Analyse</h3>
+              <h3 className="text-xl font-semibold mb-3">Analyse de la demande</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Contact et analyse de votre marchandise, origine, destination et documents nécessaires.
+                Contactez-Nous, nous analysons votre marchandise de l&apos;origine aux documents nécessaires.
               </p>
               {/* Arrow for desktop */}
               <div className="hidden lg:block absolute top-12 -right-4 text-[#E85E27]">
@@ -547,9 +550,9 @@ export default function Home() {
                   02
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Proposition de Solution</h3>
+              <h3 className="text-xl font-semibold mb-3">Proposition de solution</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Nos experts proposent la solution optimale et vous recevez un devis détaillé.
+                Nos experts vous proposent la solution optimale et vous recevez un devis détaillé.
               </p>
               {/* Arrow for desktop */}
               <div className="hidden lg:block absolute top-12 -right-4 text-[#E85E27]">
@@ -601,7 +604,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-3">Dédouanement</h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Prise en charge complète des procédures douanières et liquidation.
+                Prise en charge totale des procédures douanières.
               </p>
               {/* Arrow for desktop */}
               <div className="hidden lg:block absolute top-12 -right-4 text-[#E85E27]">
@@ -656,14 +659,14 @@ export default function Home() {
             className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 text-center max-w-4xl mx-auto"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-[#232d37] mb-4">
-              Prêt à Optimiser Votre Logistique ?
+              Prêt à renforcer votre logistique ?
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
-              Contactez-nous dès aujourd'hui pour obtenir un devis personnalisé et découvrir comment nous pouvons vous accompagner dans vos projets.
+              Faisons le point sur votre besoin, votre calendrier et vos contraintes pour vous proposer une solution claire, rapide et conforme.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/contact"
+                to="/quote-request"
                 className="bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2 group"
               >
                 Demander un devis rapide
@@ -687,10 +690,10 @@ export default function Home() {
           <div className="flex justify-between items-end mb-12">
             <div>
               <p className="text-[#E85E27] font-semibold uppercase tracking-wide mb-2">
-                Dernières Nouvelles
+                ACTUALITÉS & CONSEILS
               </p>
               <h2 className="text-3xl lg:text-4xl font-bold text-[#232d37]">
-                Publications Récentes
+                Les réflexions utiles pour mieux piloter vos opérations
               </h2>
             </div>
             <Link to="/blog" className="hidden md:flex items-center gap-2 text-[#232d37] font-semibold hover:text-[#E85E27] transition-colors">
@@ -711,7 +714,7 @@ export default function Home() {
             >
               <div className="relative h-56 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1644134913822-1cd030b3d148" 
+                  src="https://images.unsplash.com/photo-1585713181935-d5f622cc2415" 
                   alt="Transit maritime" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
@@ -803,10 +806,10 @@ export default function Home() {
 
           {/* Mobile "Voir Tout" Button */}
           <div className="flex md:hidden justify-center mt-8">
-            <button className="flex items-center gap-2 text-[#232d37] font-semibold hover:text-[#E85E27] transition-colors">
+            <Link to="/blog" className="flex items-center gap-2 text-[#232d37] font-semibold hover:text-[#E85E27] transition-colors">
               Voir Tout
               <ArrowRight size={20} />
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, User, ArrowRight, Search, Tag } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Link, useSearchParams } from 'react-router';
+import { toast } from 'sonner';
 import { Breadcrumb } from '../components/Breadcrumb';
 
 export default function Blog() {
@@ -101,6 +102,19 @@ export default function Blog() {
       featured: false
     }
   ];
+
+  const handleNewsletterSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const email = (e.currentTarget as HTMLFormElement).elements[0] as HTMLInputElement;
+    const value = email.value.trim();
+    if (!value) {
+      return;
+    }
+    const existing = JSON.parse(localStorage.getItem('igs_newsletter_subscribers') || '[]');
+    localStorage.setItem('igs_newsletter_subscribers', JSON.stringify([...existing, { email: value, subscribedAt: new Date().toISOString() }]));
+    toast.success('Merci pour votre inscription à la newsletter.');
+    email.value = '';
+  };
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesCategory = selectedCategory === 'Tous' || post.category === selectedCategory;
@@ -327,16 +341,16 @@ export default function Blog() {
           <p className="text-lg mb-8 max-w-2xl mx-auto">
             Abonnez-vous à notre newsletter pour recevoir les dernières actualités et conseils en logistique internationale
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+          <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
             <input
               type="email"
               placeholder="Votre adresse e-mail"
               className="flex-1 px-6 py-4 rounded-lg bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#232d37]"
             />
-            <button className="bg-[#232d37] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#1a2129] transition-colors whitespace-nowrap">
+            <button type="submit" className="bg-[#232d37] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#1a2129] transition-colors whitespace-nowrap">
               S'abonner
             </button>
-          </div>
+          </form>
         </motion.div>
       </section>
     </div>

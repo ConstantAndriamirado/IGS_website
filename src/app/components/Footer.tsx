@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
-import { Mail, Phone, MapPin, Facebook, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import logoSrc from '../../assets/images/logo_IGS.png';
 
 export function Footer() {
   const { language } = useLanguage();
@@ -13,9 +14,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div>
-            <div className="flex flex-col mb-4">
-              <span className="text-3xl font-bold leading-none">IGS</span>
-              <span className="text-sm text-[#E85E27] font-medium">Ibrahima Golden Services</span>
+            <div className="flex items-center gap-3 mb-4">
+              <img src={logoSrc} alt="IGS" className="h-12 object-contain" />
             </div>
             <p className="text-gray-400 mb-4">
               {language === 'fr'
@@ -23,14 +23,14 @@ export function Footer() {
                 : 'Your trusted strategic partner for transit, customs clearance, freight and international logistics in Guinea.'}
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
+              <a href="https://wa.me/224612004903" target="_blank" rel="noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="WhatsApp">
+                <MessageCircle size={20} />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="LinkedIn">
-                <Linkedin size={20} />
+              <a href="mailto:contact@igservices.com" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="Email">
+                <Mail size={20} />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="YouTube">
-                <Youtube size={20} />
+              <a href="tel:+224612004903" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="Téléphone">
+                <Phone size={20} />
               </a>
             </div>
           </div>
@@ -52,11 +52,6 @@ export function Footer() {
               <li>
                 <Link to="/about" className="text-gray-400 hover:text-[#E85E27] transition-colors">
                   {language === 'fr' ? 'À propos' : 'About Us'}
-                </Link>
-              </li>
-              <li>
-                <Link to="/partners" className="text-gray-400 hover:text-[#E85E27] transition-colors">
-                  {language === 'fr' ? 'Nos partenaires' : 'Our partners'}
                 </Link>
               </li>
               <li>
@@ -139,7 +134,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <p>&copy; {currentYear} Ibrahima Golden Services. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'} | {language === 'fr' ? 'Développé par' : 'Developed by'} <a href="https://www.soulcom.gn" target="_blank" rel="noopener noreferrer" className="hover:text-[#E85E27] transition-colors">SoulCom</a></p>
+            <p>&copy; {currentYear} Ibrahima Golden Services. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'} | {language === 'fr' ? 'Développé par' : 'Developed by'} <a href="https://www.soulcom.gn" target="_blank" rel="noopener noreferrer" className="hover:text-[#E85E27] transition-colors">SoulMédias</a></p>
             <div className="flex gap-6">
               <Link to="/mentions-legales" className="hover:text-[#E85E27] transition-colors">{language === 'fr' ? 'Mentions légales' : 'Legal notices'}</Link>
               <Link to="/confidentialite" className="hover:text-[#E85E27] transition-colors">{language === 'fr' ? 'Confidentialité' : 'Privacy policy'}</Link>

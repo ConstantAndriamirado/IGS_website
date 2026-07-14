@@ -16,7 +16,7 @@ export default function Services() {
       description: isFrench
         ? 'Organisation du transport maritime international, coordination portuaire et accompagnement administratif pour vos cargaisons.'
         : 'Organisation of international sea transport, port coordination and administrative support for your cargo.',
-      image: 'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzAyNzh8MHwxfHNlYXJjaHwxfHxtYXJpbmUlMjBzaGlwfGVufDB8fHx8MTY5Mzc1OTExMw&ixlib=rb-4.0.3&q=80&w=1080'
+      image: 'https://images.unsplash.com/photo-1604506522146-316c8bedd874'
     },
     {
       id: 'aerien',
@@ -34,7 +34,7 @@ export default function Services() {
       description: isFrench
         ? 'Transport routier fiable pour les liaisons nationales, régionales et transfrontalières avec suivi opérationnel.'
         : 'Reliable road transport for national, regional and cross-border links with operational tracking.',
-      image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzAyNzh8MHwxfHNlYXJjaHwxfHx0cnVjayUyMGNhcmJvbiUyMGxvZ2lzdGljc3xlbnwwfHx8fDE2OTM3NTkzNjU&ixlib=rb-4.0.3&q=80&w=1080'
+      image: 'https://images.unsplash.com/photo-1618582948377-cd7eb0e8cb14'
     },
     {
       id: 'dedouanement',
@@ -61,7 +61,7 @@ export default function Services() {
       description: isFrench
         ? 'Conseils stratégiques pour optimiser vos coûts, sécuriser vos opérations et renforcer votre performance commerciale.'
         : 'Strategic advice to optimize costs, secure operations and strengthen your commercial performance.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbnN1bHRpbmclMjBtZWV0aW5nfGVufDF8fHx8MTc3MTIwNjM2NXww&ixlib=rb-4.1.0&q=80&w=1080'
+      image: 'https://plus.unsplash.com/premium_photo-1707155465598-72c956ca9bae'
     }
   ];
 
@@ -91,8 +91,8 @@ export default function Services() {
             </h1>
             <p className="text-xl text-gray-200 leading-relaxed">
               {isFrench
-                ? 'Des solutions de transit, de dédouanement, de fret et de logistique sur mesure pour accompagner vos opérations d’import-export avec efficacité.'
-                : 'Tailored transit, customs clearance, freight and logistics solutions to support your import-export operations with efficiency.'}
+                ? 'Des solutions de transit, de dédouanement, de fret et de logistique sur mesure pour accompagner vos opérations d’import-export avec efficacité, conformité et réactivité.'
+                : 'Tailored transit, customs clearance, freight and logistics solutions to support your import-export operations with efficiency, compliance and responsiveness.'}
             </p>
           </motion.div>
         </div>
@@ -118,13 +118,7 @@ export default function Services() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                
-                {/* Icon Badge */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-[#232d37] w-16 h-16 rounded-lg flex items-center justify-center shadow-xl">
-                    <service.icon size={32} className="text-white" />
-                  </div>
-                </div>
+               
               </div>
 
               {/* Content */}
@@ -165,8 +159,8 @@ export default function Services() {
           </h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto text-lg">
             {isFrench
-              ? 'Nos experts sont à votre disposition pour analyser vos besoins spécifiques et vous proposer la solution logistique la plus adaptée.'
-              : 'Our experts are available to analyze your specific needs and propose the most suitable logistics solution.'}
+              ? 'Nos experts analysent votre besoin, vos délais et vos contraintes pour vous proposer la solution la plus adaptée à votre réalité opérationnelle.'
+              : 'Our experts analyze your needs, deadlines and constraints to propose the most suitable solution for your operational reality.'}
           </p>
           <Link
             to="/contact"
