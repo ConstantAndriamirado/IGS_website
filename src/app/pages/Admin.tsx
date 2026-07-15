@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { toast } from 'sonner';
 import { useLanguage } from '../context/LanguageContext';
@@ -80,10 +81,11 @@ const loadStoredItems = <T,>(key: string, fallback: T[]): T[] => {
 
 export default function Admin() {
   const { language } = useLanguage();
+  const navigate = useNavigate();
   const isFrench = language === 'fr';
 
   const [activeSection, setActiveSection] = useState('dashboard');
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [contactMessages, setContactMessages] = useState<ContactMessage[]>(() => loadStoredItems<ContactMessage>('igs_contact_messages', [] as ContactMessage[]));
   const [quoteRequests, setQuoteRequests] = useState<QuoteRequestEntry[]>(() => loadStoredItems<QuoteRequestEntry>('igs_quote_requests', [] as QuoteRequestEntry[]));
   const [portalSettings, setPortalSettings] = useState<PortalClientSettings>(() => loadPortalClientSettings());
@@ -296,6 +298,18 @@ export default function Admin() {
 
   const handleCreatePost = () => {
     setEditingPost(createEmptyBlogPost());
+  };
+
+  const handleMenuSelect = (sectionId: string) => {
+    setActiveSection(sectionId);
+    setSidebarOpen(false);
+  };
+
+  const handleLogout = () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem('igs_admin_access');
+    }
+    navigate('/');
   };
 
   const handleEditPost = (post: BlogPostRecord) => {
@@ -535,12 +549,12 @@ export default function Admin() {
       case 'articles':
         return (
           <div className="bg-white rounded-xl shadow-lg p-6 space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h2 className="text-2xl font-bold text-[#232d37] mb-2">{isFrench ? 'Gestion des articles' : 'Article management'}</h2>
                 <p className="text-gray-600">{isFrench ? 'Prévisualisation du contenu publié et des brouillons.' : 'Preview of published content and drafts.'}</p>
               </div>
-              <button onClick={handleCreatePost} className="bg-[#E85E27] text-white px-4 py-2 rounded-lg font-medium">{isFrench ? 'Ajouter un article' : 'Add article'}</button>
+              <button onClick={handleCreatePost} className="w-full sm:w-auto bg-[#E85E27] text-white px-4 py-2 rounded-lg font-medium">{isFrench ? 'Ajouter un article' : 'Add article'}</button>
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {recentArticles.map((article) => (
@@ -554,10 +568,10 @@ export default function Admin() {
                     <p><span className="font-medium text-[#232d37]">Vues :</span> {article.views}</p>
                     <p><span className="font-medium text-[#232d37]">Publication :</span> {article.date}</p>
                   </div>
-                  <div className="flex items-center justify-end text-sm text-gray-600">
-                    <div className="flex gap-2">
-                      <button onClick={() => handleEditPost(siteContent.posts.find((post) => post.id === article.id)!)} className="text-[#E85E27] font-medium">{isFrench ? 'Éditer' : 'Edit'}</button>
-                      <button onClick={() => handleDeletePost(article.id)} className="text-red-600 font-medium">{isFrench ? 'Suppr.' : 'Del.'}</button>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end text-sm text-gray-600">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:gap-2">
+                      <button onClick={() => handleEditPost(siteContent.posts.find((post) => post.id === article.id)!)} className="w-full sm:w-auto text-[#E85E27] font-medium">{isFrench ? 'Éditer' : 'Edit'}</button>
+                      <button onClick={() => handleDeletePost(article.id)} className="w-full sm:w-auto text-red-600 font-medium">{isFrench ? 'Suppr.' : 'Del.'}</button>
                     </div>
                   </div>
                 </div>
@@ -873,8 +887,8 @@ export default function Admin() {
       )}
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-[#232d37] text-white transition-all duration-300 z-50 ${
-          sidebarOpen ? 'w-64' : 'w-0 -translate-x-full lg:translate-x-0 lg:w-20'
+        className={`fixed top-0 left-0 z-50 flex h-full w-64 flex-col bg-[#232d37] text-white transition-transform duration-300 ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="flex items-center justify-between p-6 border-b border-gray-700">
@@ -896,7 +910,7 @@ export default function Admin() {
           {menuItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => setActiveSection(item.id)}
+              onClick={() => handleMenuSelect(item.id)}
               aria-label={item.name}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                 activeSection === item.id
@@ -912,7 +926,7 @@ export default function Admin() {
 
           {sidebarOpen && (
           <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-700">
-            <button aria-label={isFrench ? 'Se déconnecter' : 'Log out'} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+            <button onClick={handleLogout} aria-label={isFrench ? 'Se déconnecter' : 'Log out'} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
               <LogOut size={20} />
               <span>Déconnexion</span>
             </button>
@@ -923,17 +937,17 @@ export default function Admin() {
       {/* Main Content */}
       <main
         className={`transition-all duration-300 ${
-          sidebarOpen ? 'lg:ml-64' : 'lg:ml-20'
+          sidebarOpen ? 'lg:ml-64' : 'lg:ml-0'
         }`}
       >
         {/* Header */}
         <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
-          <div className="px-6 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-4">
+          <div className="px-4 py-4 flex items-center justify-between gap-3 sm:px-6">
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
                 aria-label={isFrench ? 'Ouvrir le menu' : 'Open menu'}
-                className="lg:hidden text-gray-600 hover:text-[#E85E27]"
+                className="text-[#232d37] hover:text-[#E85E27]"
               >
                 <Menu size={24} />
               </button>
@@ -941,8 +955,8 @@ export default function Admin() {
                 {menuItems.find((item) => item.id === activeSection)?.name || 'Tableau de bord'}
               </h2>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="text-right">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="hidden text-right sm:block">
                 <p className="text-sm font-semibold text-[#232d37]">Administrateur</p>
                 <p className="text-xs text-gray-500">admin@igs-guinee.com</p>
               </div>
@@ -960,7 +974,7 @@ export default function Admin() {
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/50 z-40"
           onClick={() => setSidebarOpen(false)}
         />
       )}
