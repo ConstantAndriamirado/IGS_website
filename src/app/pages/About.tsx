@@ -57,7 +57,7 @@ export default function About() {
     {
       name: 'Aissatou Sylla',
       role: isFrench ? 'Responsable Fret' : 'Freight Manager',
-      image: '/src/assets/images/Aissatou Sylla.png'
+      image: 'https://images.unsplash.com/photo-1573497019418-b400bb3ab074'
     }
   ];
 
