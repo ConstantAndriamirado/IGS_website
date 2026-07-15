@@ -77,7 +77,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative h-[90vh] min-h-[600px] flex items-center pt-16 lg:pt-20">
         <div className="absolute inset-0 z-0">
@@ -89,7 +89,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#1F1F1F]/90 via-[#1F1F1F]/70 to-[#1F1F1F]/50" />
         </div>
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl lg:max-w-5xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -126,7 +126,7 @@ export default function Home() {
 
       {/* About Us Section - Image Grid + Content */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
             {/* Left Side - Image Grid */}
             <motion.div
@@ -234,7 +234,7 @@ export default function Home() {
 
       {/* Services Section */}
       <section className="py-20 bg-[#F3F3F3]">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -291,7 +291,7 @@ export default function Home() {
 
       {/* Why Us Section */}
       <section className="py-20 bg-[#232d37]">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Image Section */}
             <motion.div
@@ -375,7 +375,7 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <motion.div
@@ -650,7 +650,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-20 bg-[#F3F3F3]">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -685,7 +685,7 @@ export default function Home() {
 
       {/* Trust Indicators */}
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="flex justify-between items-end mb-12">
             <div>

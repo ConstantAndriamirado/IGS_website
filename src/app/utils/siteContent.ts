@@ -128,8 +128,8 @@ export function loadSiteContent(): SiteContentState {
     }
 
     const parsed = JSON.parse(storedValue) as Partial<SiteContentState>;
-    const normalizedPosts = Array.isArray(parsed.posts)
-      ? parsed.posts.map((post, index) => ({
+    const normalizedPosts: BlogPostRecord[] = Array.isArray(parsed.posts)
+      ? parsed.posts.map((post: Partial<BlogPostRecord> | undefined, index): BlogPostRecord => ({
           id: typeof post?.id === 'number' ? post.id : Date.now() + index,
           slug: post?.slug || '',
           title: post?.title || '',
