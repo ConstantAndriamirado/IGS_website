@@ -61,7 +61,22 @@ export function getRelativePublishLabel(publishedAt?: string, fallbackDate?: str
   }
 
   const days = Math.floor(hours / 24);
-  return `${days}j`;
+  if (days < 30) {
+    return `${days}j`;
+  }
+
+  const publishedDate = new Date(publishedTime);
+  const currentDate = new Date(now);
+  const monthsDifference = (currentDate.getFullYear() - publishedDate.getFullYear()) * 12
+    + (currentDate.getMonth() - publishedDate.getMonth());
+
+  if (monthsDifference >= 12) {
+    const years = Math.max(1, Math.floor(monthsDifference / 12));
+    return `${years} an${years > 1 ? 's' : ''}`;
+  }
+
+  const months = Math.max(1, monthsDifference);
+  return `${months} mois`;
 }
 
 export const defaultSiteSettings: SiteSettings = {
