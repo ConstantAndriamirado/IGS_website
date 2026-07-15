@@ -38,7 +38,16 @@ export function RootLayout() {
   return (
     <div className="flex flex-col min-h-screen">
       <Outlet />
-      <Toaster position="top-right" richColors />
+      <Toaster
+        position="top-right"
+        richColors
+        expand
+        closeButton
+        toastOptions={{
+          duration: 5000,
+          className: 'min-w-[280px] rounded-xl shadow-xl border border-gray-200'
+        }}
+      />
     </div>
   );
 }

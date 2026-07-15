@@ -5,6 +5,7 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Link, useSearchParams } from 'react-router';
 import { toast } from 'sonner';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { getRelativePublishLabel, loadSiteContent, type BlogPostRecord } from '../utils/siteContent';
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('Tous');
@@ -28,80 +29,14 @@ export default function Blog() {
     'Actualités'
   ];
 
-  const blogPosts = [
-    {
-      id: 1,
-      slug: 'nouvelles-procedures-douanieres-guinee-2026',
-      title: 'Les nouvelles procédures douanières en Guinée pour 2026',
-      excerpt: 'Découvrez les dernières modifications réglementaires qui impactent vos opérations d\'import-export et comment IGS vous accompagne dans cette transition.',
-      category: 'Transit & Douane',
-      author: 'Mamadou Bah',
-      date: '12 Février 2026',
-      readTime: '5 min',
-      image: 'https://images.unsplash.com/photo-1763225271111-dd9363584249?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21zJTIwZG9jdW1lbnRzJTIwcGFwZXJ3b3JrfGVufDF8fHx8MTc3MTIxMTQzNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      featured: true
-    },
-    {
-      id: 2,
-      slug: 'optimiser-couts-fret-maritime-strategies',
-      title: 'Optimiser vos coûts de fret maritime : 7 stratégies essentielles',
-      excerpt: 'Dans un contexte de hausse des tarifs maritimes, découvrez comment réduire vos dépenses tout en maintenant la qualité de service.',
-      category: 'Fret Maritime',
-      author: 'Aissatou Sylla',
-      date: '8 Février 2026',
-      readTime: '7 min',
-      image: 'https://images.unsplash.com/photo-1735047974891-df59713d8192?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHNoaXAlMjBjb250YWluZXIlMjBwb3J0fGVufDF8fHx8MTc3MTIxMTQzNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      featured: true
-    },
-    {
-      id: 3,
-      slug: 'fret-aerien-express-rapidite-difference',
-      title: 'Le fret aérien express : quand la rapidité fait la différence',
-      excerpt: 'Pour vos envois urgents, le fret aérien reste la solution privilégiée. Analyse des avantages et des meilleures pratiques.',
-      category: 'Fret Aérien',
-      author: 'Fatoumata Camara',
-      date: '5 Février 2026',
-      readTime: '4 min',
-      image: 'https://images.unsplash.com/photo-1696385041146-d2827a77b992?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhaXJwbGFuZSUyMGNhcmdvJTIwbG9hZGluZ3xlbnwxfHx8fDE3NzExNDUwMDB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      featured: false
-    },
-    {
-      id: 4,
-      slug: 'transport-routier-afrique-ouest-defis-opportunites',
-      title: 'Transport routier en Afrique de l\'Ouest : défis et opportunités',
-      excerpt: 'Le corridor routier guinéen offre des perspectives intéressantes pour le commerce régional. Tour d\'horizon des infrastructures.',
-      category: 'Logistique',
-      author: 'Ibrahima Diallo',
-      date: '1 Février 2026',
-      readTime: '6 min',
-      image: 'https://images.unsplash.com/photo-1758224388408-b060b4e0f2cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cnVjayUyMHRyYW5zcG9ydGF0aW9uJTIwaGlnaHdheXxlbnwxfHx8fDE3NzEyMTE0Mzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      featured: false
-    },
-    {
-      id: 5,
-      slug: 'gestion-stocks-entreposage-efficace',
-      title: 'Gestion des stocks : les clés d\'un entreposage efficace',
-      excerpt: 'Un entreposage optimisé garantit la sécurité de vos marchandises et accélère vos opérations. Nos conseils d\'experts.',
-      category: 'Logistique',
-      author: 'Fatoumata Camara',
-      date: '28 Janvier 2026',
-      readTime: '5 min',
-      image: 'https://images.unsplash.com/photo-1763752194641-3c5638aec65e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsb2dpc3RpY3MlMjB3YXJlaG91c2UlMjBmcmVpZ2h0fGVufDF8fHx8MTc3MTIxMTQzNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      featured: false
-    },
-    {
-      id: 6,
-      slug: 'partenariat-igs-chaine-logistique-guinee',
-      title: 'Partenariat IGS : renforcer la chaîne logistique en Guinée',
-      excerpt: 'Retour sur nos récents partenariats stratégiques qui améliorent notre offre de services et bénéficient à nos clients.',
-      category: 'Actualités',
-      author: 'Ibrahima Diallo',
-      date: '24 Janvier 2026',
-      readTime: '3 min',
-      image: 'https://images.unsplash.com/photo-1745847768380-2caeadbb3b71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGhhbmRzaGFrZSUyMHBhcnRuZXJzaGlwfGVufDF8fHx8MTc3MTE4NjEwM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      featured: false
-    }
-  ];
+  const [blogPosts, setBlogPosts] = useState<BlogPostRecord[]>(() => loadSiteContent().posts);
+
+  useEffect(() => {
+    const refreshPosts = () => setBlogPosts(loadSiteContent().posts);
+    refreshPosts();
+    window.addEventListener('igs-site-content-updated', refreshPosts);
+    return () => window.removeEventListener('igs-site-content-updated', refreshPosts);
+  }, []);
 
   const handleNewsletterSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -222,7 +157,7 @@ export default function Blog() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <div className="flex items-center gap-4 mb-3 text-sm text-gray-500">
+                    <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-gray-500">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {post.date}
@@ -231,7 +166,7 @@ export default function Blog() {
                         <User className="w-4 h-4" />
                         {post.author}
                       </span>
-                      <span>{post.readTime}</span>
+                      <span className="text-[#E85E27] font-medium">{getRelativePublishLabel(post.publishedAt, post.date)}</span>
                     </div>
                     <span className="inline-block bg-[#E85E27]/10 text-[#E85E27] px-3 py-1 rounded-full text-xs font-semibold mb-3">
                       {post.category}
@@ -287,12 +222,12 @@ export default function Blog() {
                     />
                   </div>
                   <div className="p-6">
-                    <div className="flex items-center gap-3 mb-3 text-xs text-gray-500">
+                    <div className="flex flex-wrap items-center gap-3 mb-3 text-xs text-gray-500">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
                         {post.date}
                       </span>
-                      <span>{post.readTime}</span>
+                      <span className="text-[#E85E27] font-medium">{getRelativePublishLabel(post.publishedAt, post.date)}</span>
                     </div>
                     <span className="inline-block bg-[#E85E27]/10 text-[#E85E27] px-3 py-1 rounded-full text-xs font-semibold mb-3">
                       {post.category}

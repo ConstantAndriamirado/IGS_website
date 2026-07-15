@@ -1,17 +1,26 @@
 import { motion } from 'motion/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, BarChart3, Bell, Clock, PackageSearch, Rocket, Upload } from 'lucide-react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { useLanguage } from '../context/LanguageContext';
+import { loadPortalClientSettings, subscribePortalClientSettings } from '../utils/portalSettings';
 
 export default function PortailClient() {
   const { language } = useLanguage();
   const isFrench = language === 'fr';
-  const portalUrl = 'https://portail.igs-guinee.com';
+  const [portalSettings, setPortalSettings] = useState(loadPortalClientSettings);
+  const portalUrl = portalSettings.url || 'https://portail.igs-guinee.com';
 
   useEffect(() => {
-    window.location.assign(portalUrl);
+    const updateSettings = () => setPortalSettings(loadPortalClientSettings());
+    updateSettings();
+    return subscribePortalClientSettings(updateSettings);
   }, []);
+
+  useEffect(() => {
+    if (!portalSettings.enabled) return;
+    window.location.assign(portalUrl);
+  }, [portalSettings.enabled, portalUrl]);
 
   const features = [
     {
@@ -50,9 +59,9 @@ export default function PortailClient() {
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-[#232d37] mb-6">{isFrench ? 'Portail Client' : 'Client Portal'} <span className="text-[#E85E27]">IGS</span></h1>
           <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            {isFrench ? 'Vous allez être redirigé vers votre espace sécurisé IGS. Si la redirection ne se fait pas automatiquement, utilisez le lien ci-dessous.' : 'You will be redirected to your secure IGS space. If the redirect does not happen automatically, use the link below.'}
+            {portalSettings.infoMessage || (isFrench ? 'Vous allez être redirigé vers votre espace sécurisé IGS. Si la redirection ne se fait pas automatiquement, utilisez le lien ci-dessous.' : 'You will be redirected to your secure IGS space. If the redirect does not happen automatically, use the link below.')}
           </p>
-          <a href={portalUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-[#E85E27] hover:bg-[#d14d1a] text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl">
+          <a href={portalUrl} target={portalSettings.openInNewTab ? '_blank' : '_self'} rel="noreferrer" className={`inline-flex items-center gap-2 ${portalSettings.buttonColor} hover:opacity-90 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl`}>
             {isFrench ? 'Accéder au portail' : 'Access the portal'}
             <ArrowRight size={20} />
           </a>

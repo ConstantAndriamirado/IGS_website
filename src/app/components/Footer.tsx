@@ -1,11 +1,21 @@
 import { Link } from 'react-router';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { loadSiteContent, type SiteSettings } from '../utils/siteContent';
 import logoSrc from '../../assets/images/logo_IGS.png';
 
 export function Footer() {
   const { language } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(() => loadSiteContent().settings);
+
+  useEffect(() => {
+    const refreshSettings = () => setSiteSettings(loadSiteContent().settings);
+    refreshSettings();
+    window.addEventListener('igs-site-content-updated', refreshSettings);
+    return () => window.removeEventListener('igs-site-content-updated', refreshSettings);
+  }, []);
 
   return (
     <footer className="bg-[#232d37] text-white">
@@ -18,18 +28,16 @@ export function Footer() {
               <img src={logoSrc} alt="IGS" className="h-12 object-contain" />
             </div>
             <p className="text-gray-400 mb-4">
-              {language === 'fr'
-                ? 'Votre partenaire stratégique pour le transit, le dédouanement, le fret et la logistique internationale en Guinée.'
-                : 'Your trusted strategic partner for transit, customs clearance, freight and international logistics in Guinea.'}
+              {siteSettings.tagline}
             </p>
             <div className="flex gap-4">
-              <a href="https://wa.me/224612004903" target="_blank" rel="noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="WhatsApp">
+              <a href={`https://wa.me/${siteSettings.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="WhatsApp">
                 <MessageCircle size={20} />
               </a>
-              <a href="mailto:contact@igservices.com" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="Email">
+              <a href={`mailto:${siteSettings.email}`} className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="Email">
                 <Mail size={20} />
               </a>
-              <a href="tel:+224612004903" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="Téléphone">
+              <a href={`tel:${siteSettings.phone}`} className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="Téléphone">
                 <Phone size={20} />
               </a>
             </div>
@@ -115,15 +123,15 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex gap-3 text-gray-400">
                 <MapPin size={20} className="text-[#E85E27] flex-shrink-0 mt-1" />
-                <span>Almamya, Kaloum, Rue de la gare, Immeuble Azur, Conakry, République de Guinée</span>
+                <span>{siteSettings.address}</span>
               </li>
               <li className="flex gap-3 text-gray-400">
                 <Phone size={20} className="text-[#E85E27] flex-shrink-0" />
-                <span>+224 612 004 903</span>
+                <span>{siteSettings.phone}</span>
               </li>
               <li className="flex gap-3 text-gray-400">
                 <Mail size={20} className="text-[#E85E27] flex-shrink-0" />
-                <span>contact@igservices.com</span>
+                <span>{siteSettings.email}</span>
               </li>
             </ul>
           </div>
