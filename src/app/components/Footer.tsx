@@ -17,6 +17,10 @@ export function Footer() {
     return () => window.removeEventListener('igs-site-content-updated', refreshSettings);
   }, []);
 
+  const footerTagline = language === 'fr'
+    ? siteSettings.tagline || 'Votre partenaire stratégique pour le transit, le dédouanement, le fret et la logistique internationale en Guinée.'
+    : 'Your strategic partner for transit, customs clearance, freight and international logistics in Guinea.';
+
   return (
     <footer className="bg-[#232d37] text-white">
       {/* Main Footer Content */}
@@ -28,7 +32,7 @@ export function Footer() {
               <img src={logoSrc} alt="IGS" className="h-12 object-contain" />
             </div>
             <p className="text-gray-400 mb-4">
-              {siteSettings.tagline}
+              {footerTagline}
             </p>
             <div className="flex gap-4">
               <a href={`https://wa.me/${siteSettings.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="w-10 h-10 bg-white/10 hover:bg-[#E85E27] rounded-full flex items-center justify-center transition-colors" aria-label="WhatsApp">
